@@ -1,5 +1,7 @@
 <head>
-	<title></title>
+	{{if title}}
+        <title>${title}</title>
+    {{/if}}
 
 	<!-- Meta -->
 	<meta charset="UTF-8" />

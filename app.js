@@ -57,7 +57,8 @@ app.configure(function () {
     app.engine('kiwi', function(filename, options, callback) {
         kiwi.__express(filename, options, function(err, rendered) {
             if (err) console.error(err);
-            callback(err, rendered.toString());
+            var content = rendered ? rendered.toString() : '';
+            callback(err, content);
         });
     });
     app.use(express.favicon());
@@ -92,13 +93,22 @@ app.configure('development', function () {
     app.use(express.errorHandler());
 });
 
-app.get('/', routes.index);
+app.get('/', passport.authorize('local', { failureRedirect: '/login' }), routes.index );
+
+app.get('/signup', routes.signup);
+app.post('/signup', routes.signupComplete);
+
 app.get('/login', routes.login);
 app.post('/login',
     passport.authenticate('local', { successRedirect: '/',
         failureRedirect: '/login',
         failureFlash: true })
 );
+
+app.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/');
+});
 
 http.createServer(app).listen(app.get('port'), function () {
     console.log("Express server listening on port " + app.get('port'));

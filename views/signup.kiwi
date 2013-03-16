@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html> <!--<![endif]-->
+{{include "head"}}
+<body>
+<!-- Start Content -->
+<div class="container-fluid fixed top-menu">
+
+
+    <div id="content">
+
+        <ul class="breadcrumb">
+            <li><a href="/" class="glyphicons home"><i></i> ${__('CommonHome')}</a></li>
+            <li class="divider"></li>
+            <li>${__('SignupRegister')}</li>
+        </ul>
+        <div class="separator bottom"></div>
+
+        <h3 class="glyphicons show_thumbnails_with_lines"><i></i> ${__('SignupTitle')}</h3>
+
+        <form class="form-horizontal" style="margin-bottom: 0;" id="signupForm" method="post" autocomplete="off">
+
+            <h4>${__('SignupSubtitle')}</h4>
+            <hr class="separator line"/>
+            <div class="row-fluid">
+                <div class="span6">
+                    <div class="control-group">
+                        <label class="control-label" for="cardNumber">${__('SignupCardNumber')}</label>
+
+                        <div class="controls"><input class="span12" id="cardNumber" name="cardNumber" type="text"/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="email">${__('SignupEmail')}</label>
+
+                        <div class="controls"><input class="span12" id="email" name="email" type="text"/></div>
+                    </div>
+                </div>
+                <div class="span6">
+                    <div class="control-group">
+                        <label class="control-label" for="PIN">${__('SignupPIN')}</label>
+
+                        <div class="controls"><input class="span12" id="PIN" name="PIN" type="password"/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="password">${__('SignupPassword')}</label>
+
+                        <div class="controls"><input class="span12" id="password" name="password" type="password"/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="confirmPassword">${__('SignupConfirmPassword')}</label>
+
+                        <div class="controls"><input class="span12" id="confirmPassword" name="confirmPassword"
+                                                     type="password"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="separator line"/>
+            <div class="row-fluid">
+                <div class="span6">
+                    <div class="control-group">
+                        <label class="control-label" for="firstName">${__('SignupFirstName')}</label>
+
+                        <div class="controls"><input class="span12" id="firstName" name="firstName" type="text"/></div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="lastName">${__('SignupLastName')}</label>
+
+                        <div class="controls"><input class="span12" id="lastName" name="lastName" type="text"/></div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">${__('SignupGender')}</label>
+
+                        <div class="controls">
+
+                            <input type="radio" class="radio" name="gender" value="M" checked="checked"/>
+                            <label class="radio">
+                                ${__('SignupGenderMale')}
+                            </label>
+
+                            <input type="radio" class="radio" name="gender" value="F"/>
+                            <label class="radio">
+                                ${__('SignupGenderFemale')}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">${__('SignupDateOfBirth')}</label>
+                        <div class="controls">
+                            <select class="span3" name="dobDay">
+                            </select>
+                            <select class="span6" name="dobMonth">
+                            </select>
+                            <select class="span3" name="dobYear">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="city">${__('SignupCity')}</label>
+                        <div class="controls"><input class="span12" id="city" name="city" type="text"/></div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="address">${__('SignupAddress')}</label>
+                        <div class="controls"><input class="span12" id="address" name="address" type="text"/></div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="phone">${__('SignupPhone')}</label>
+                        <div class="controls"><input class="span12" id="phone" name="phone" type="text"/></div>
+                    </div>
+                </div>
+                <div class="span6">
+                    <div class="control-group">
+                        <label class="control-label" for="activity">${__('SignupActivity')}</label>
+                        <div class="controls"><input class="span12" id="activity" name="activity" type="text"/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="secretQuestion">${__('SignupSecretQuestion')}</label>
+                        <div class="controls"><input class="span12" id="secretQuestion" name="secretQuestion" type="text"/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="secretAnswer">${__('SignupSecretAnswer')}</label>
+                        <div class="controls"><input class="span12" id="secretAnswer" name="secretAnswer" type="text"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="separator line"/>
+
+            <div class="row-fluid uniformjs">
+                <div class="span4">
+                    <h4 style="margin-bottom: 10px;">${__('SignupPolicy')}</h4>
+                    <label class="checkbox" for="agree">
+                        <input type="checkbox" class="checkbox" id="agree" name="agree"/>
+                        ${__('SignupAgreeToPolicy')}
+                    </label>
+                </div>
+                <div class="span8">
+                    <div id="newsletter_topics">
+                        <h4>${__('SignupNewsletters')}</h4>
+                        <p>${__('SignupNewslettersOptions')}</p>
+                        <label for="contactByEmail">
+                            <input type="checkbox" id="contactByEmail" value="true" name="contactByEmail"/>
+                            ${__('SignupNewsletterEmail')}
+                        </label>
+                        <label for="contactBySMS">
+                            <input type="checkbox" id="contactBySMS" value="true" name="contactBySMS"/>
+                            ${__('SignupNewsletterSMS')}
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="separator"></div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-icon btn-primary glyphicons circle_ok"><i></i>${__('SignupRegister')}</button>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+<!-- jQuery Validate -->
+<script src="theme/scripts/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
+<script src="theme/scripts/jquery-form/jquery.form.js" type="text/javascript"></script>
+<script src="js/signup.js" type="text/javascript"></script>
+
+{{include "footer"}}
+<div id="modal" class="modal hide fade" role="dialog">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3></h3>
+    </div>
+    <div class="modal-body">
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-block btn-icon glyphicons circle_exclamation_mark" data-dismiss="modal"><i></i> Закрыть</button>
+        <button class="btn btn-block btn-primary btn-icon glyphicons ok"><i></i> Продолжить</button>
+    </div>
+</div>
+</body>
+</html>

@@ -9,47 +9,31 @@
 <html> <!--<![endif]-->
 {{include "head"}}
 <body class="login">
-
+<style>
+    .signup{
+        width : 300px;
+        margin-top: 15px;
+    }
+</style>
 <!-- Start Content -->
 <div class="container-fluid fixed top-menu">
     <div id="content">
         <div id="login">
             <form class="form-signin" method="post" action="index.html?lang=en&amp;menu_position=top-menu">
                 <label class="strong">${ __('LoginEmail')}</label>
-                <input type="text" class="input-block-level" placeholder="${ __('LoginEmail')}">
+                <input type="text" name="username" class="input-block-level" placeholder="${ __('LoginEmail')}">
                 <label class="strong">${ __('LoginPassword')}</label>
-                <input type="password" class="input-block-level" placeholder="${ __('LoginPassword')}">
-
+                <input type="password" name="password" class="input-block-level" placeholder="${ __('LoginPassword')}">
                 <div class="separator line"></div>
                 <span class="pull-left uniformjs"><label class="checkbox"><a href="#">${ __('LoginForgot')}</a></label></span>
                 <button class="btn btn-large btn-primary pull-right" type="submit">${ __('LoginLogin')}</button>
                 <div class="clearfix"></div>
             </form>
-            <a class="btn btn-large btn-info" href="index.html">${ __('LoginRegister')}</a>
+            <a class="signup btn btn-large btn-info" href="/signup">${ __('LoginRegister')}</a>
         </div>
     </div>
 </div>
 
 {{include "footer"}}
 
-
 </body>
-
-<!-- <body>
-   <h1></h1>
-   <p>Welcome to </p>
-   <form action="/login" method="post">
-       <div>
-           <label>Username:</label>
-           <input type="text" name="username"/>
-       </div>
-       <div>
-           <label>Password:</label>
-           <input type="password" name="password"/>
-       </div>
-       <div>
-           <input type="submit" value="Log In"/>
-       </div>
-   </form>
- </body> -->
-</html>
