@@ -25,7 +25,7 @@
         <h3 class="glyphicons show_thumbnails_with_lines"><i></i> ${__('SignupTitle')}</h3>
 
         <form class="form-horizontal" style="margin-bottom: 0;" id="signupForm" method="post" autocomplete="off">
-
+            <input type="hidden" name="dateOfBirth" value="" />
             <h4>${__('SignupSubtitle')}</h4>
             <hr class="separator line"/>
             <div class="row-fluid">
@@ -97,10 +97,13 @@
                         <label class="control-label">${__('SignupDateOfBirth')}</label>
                         <div class="controls">
                             <select class="span3" name="dobDay">
+                                <option value="">${__('CommonPleaseSelect')}</option>
                             </select>
                             <select class="span6" name="dobMonth">
+                                <option value="">${__('CommonPleaseSelect')}</option>
                             </select>
                             <select class="span3" name="dobYear">
+                                <option value="">${__('CommonPleaseSelect')}</option>
                             </select>
                         </div>
                     </div>

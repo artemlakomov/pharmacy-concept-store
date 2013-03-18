@@ -1,15 +1,13 @@
 $.validator.setDefaults(
     {
-        submitHandler: function() {
+        submitHandler: function () {
             //TODO: implement loader logic
         },
-        showErrors: function(map, list)
-        {
+        showErrors: function (map, list) {
             this.currentElements.parents('label:first, .controls:first').find('.error').remove();
             this.currentElements.parents('.control-group:first').removeClass('error');
 
-            $.each(list, function(index, error)
-            {
+            $.each(list, function (index, error) {
                 var ee = $(error.element);
                 var eep = ee.parents('label:first').length ? ee.parents('label:first') : ee.parents('.controls:first');
 
@@ -20,14 +18,39 @@ $.validator.setDefaults(
         }
     });
 
-$(function()
-{
+$(function () {
+
+    var monthNames = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+    var now = new Date();
+
+    var dobDay = $('select[name=dobDay]');
+    for (var i = 1; i <= 31; i++) {
+        dobDay.append('<option value="' + i + '">' + i + '</option>');
+    }
+
+    var dobMonth = $('select[name=dobMonth]');
+    for (var i = 1; i <= 12; i++) {
+        dobMonth.append('<option value="' + i + '">' + monthNames[i - 1] + '</option>');
+    }
+
+    var year = now.getFullYear();
+    var dobYear = $('select[name=dobYear]');
+    for (var i = year; i >= (year - 90); i--) {
+        dobYear.append('<option value="' + i + '">' + i + '</option>');
+    }
+
+    jQuery.validator.addMethod("dob", function (value, element) {
+        var dob = new Date(dobYear.val() + '-' + dobMonth.val() + '-' + dobDay.val());
+        $('input[name=dateOfBirth]').val(dobYear.val() + '-' + dobMonth.val() + '-' + dobDay.val());
+        return dobDay.val() && dobMonth.val() && dobYear.val() && dob;
+    }, "Укажите дату рождения");
+
     // validate signup form on keyup and submit
-    $("#signupForm").ajaxForm(function(data){
-        $('#modal').find('.btn-primary').click(function(){
-           window.location.href = '/';
+    $("#signupForm").ajaxForm(function (data) {
+        $('#modal').find('.btn-primary').click(function () {
+            window.location.href = '/';
         });
-        if(data.isOK){
+        if (data.isOK) {
             $('#modal').find('.close').hide();
             $('#modal').find('button[data-dismiss="modal"]').hide();
             $('#modal').find('.btn-primary').show();
@@ -70,7 +93,10 @@ $(function()
             activity: "required",
             secretQuestion: "required",
             secretAnswer: "required",
-            agree: "required"
+            agree: "required",
+            dobDay: { dob: true},
+            dobMonth: { dob: true},
+            dobYear: { dob: true}
         },
         messages: {
             cardNumber: "Введите номер Вашей карты",
@@ -78,7 +104,7 @@ $(function()
                 required: "Введите адрес Вашей электронной почты",
                 email: "Введите корректный адрес электронной почты"
             },
-            PIN : {
+            PIN: {
                 required: "Введите 4 цифры PIN-кода",
                 number: "Введите 4 цифры PIN-кода",
                 maxlength: "Введите 4 цифры PIN-кода"

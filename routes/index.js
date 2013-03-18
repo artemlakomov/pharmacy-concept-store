@@ -49,3 +49,32 @@ exports.signupComplete = function (req, res) {
         });
     });
 };
+
+exports.activate = function (req, res) {
+    res.render('activate', {
+        title: res.__('ActivateTitle') + ' - ' + res.__('ActivateSubtitle'),
+        code : req.query.code ? req.query.code : ''
+    });
+};
+
+exports.activateComplete = function (req, res) {
+
+    var storage = require('../model/storage');
+
+    storage.Customer.findOne({ activationCode: req.body.code }, function (err, cust) {
+
+        if (cust == null) {
+            res.err(res.__('ActivateErrorTitle'), res.__('ActivateErrorIncorrectCode'));
+            return;
+        }
+
+        cust.actvationCode = null;
+        cust.save(function (err) {
+            if (err) {
+                res.err(res.__('ActivateErrorTitle'), err.toString());
+            } else {
+                res.ok(res.__('ActivateSuccessTitle'), res.__('ActivateSuccessBody'));
+            }
+        });
+    });
+};
