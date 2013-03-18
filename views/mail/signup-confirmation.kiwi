@@ -1,0 +1,29 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<p>
+    Добрый день, ${customer.firstName}!
+</p>
+<p>
+    Чтобы завершить процедуру регистрации Вашего личного кабинета, пожалуйста, перейдите по ссылке ниже:<br/>
+    <a href="${baseUrl}/activate?code=${customer.activationCode}">${baseUrl}/activate?code=${customer.activationCode}</a>
+</p>
+<p>
+    Рады приветствовать в кругу Pharmacy CONCEPT CARD!
+</p>
+
+<p>
+    Спасибо, что выбрали нас!<br/>
+    Команда Pharmacy CONCEPT STORE!
+</p>
+
+<p>
+    <sub>Если указанная выше ссылка не открывается, скопируйте ее в буфер обмена, вставьте в адресную строку браузера и
+    нажмите Enter.<br/>
+    Если Вы считаете, что данное письмо прислано Вам ошибочно, просто проигнорируйте его.</sub>
+</p>
+
+</body>
+</html>

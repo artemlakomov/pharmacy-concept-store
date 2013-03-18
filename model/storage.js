@@ -1,12 +1,16 @@
 var mongoose = require('mongoose');
 var config = require('./config');
+mongoose.connect('mongodb://localhost/test');
 
 var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
+
+db.on('error', function(err){
+    console.error(err);
+});
+
 db.once('open', function callback () {
     console.log('mongodb connection established');
 });
-mongoose.connect('mongodb://localhost/test');
 
 /************** Customer **********************/
 
@@ -26,7 +30,8 @@ var customerSchema = mongoose.Schema({
     address: { type: String, required: true },
     phone: { type: String, required: true },
     contactByEmail: { type: Boolean, required: true, default : true },
-    contactBySMS: { type: Boolean, required: true, default : true }
+    contactBySMS: { type: Boolean, required: true, default : true } ,
+    activationCode: { type: String, required: false }
 });
 
 exports.Customer = mongoose.model('Customer', customerSchema);

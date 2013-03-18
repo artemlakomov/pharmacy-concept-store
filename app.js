@@ -54,8 +54,8 @@ app.configure(function () {
     app.set('port', process.env.PORT || 3000);
     app.set('view engine', 'kiwi');
     app.set('views', 'views');
-    app.engine('kiwi', function(filename, options, callback) {
-        kiwi.__express(filename, options, function(err, rendered) {
+    app.engine('kiwi', function (filename, options, callback) {
+        kiwi.__express(filename, options, function (err, rendered) {
             if (err) console.error(err);
             var content = rendered ? rendered.toString() : '';
             callback(err, content);
@@ -85,6 +85,30 @@ app.configure(function () {
         next();
     });
 
+    app.use(function (req, res, next) {
+        res.err = function (title, message) {
+            res.send({
+                isOK: false,
+                title: title,
+                message: message
+            });
+        };
+
+        res.ok = function (title, message) {
+            res.send({
+                isOK: true,
+                title: title,
+                message: message
+            });
+        };
+
+        var port = app.get('port');
+        req.baseUrl = req.protocol + '://' + req.host;
+        if(port != '80') req.baseUrl += ':' + port;
+
+        next();
+    });
+
     app.use(app.router);
     app.use(express.static(path.join(__dirname, 'public')));
 });
@@ -93,7 +117,7 @@ app.configure('development', function () {
     app.use(express.errorHandler());
 });
 
-app.get('/', passport.authorize('local', { failureRedirect: '/login' }), routes.index );
+app.get('/', passport.authorize('local', { failureRedirect: '/login' }), routes.index);
 
 app.get('/signup', routes.signup);
 app.post('/signup', routes.signupComplete);
@@ -105,7 +129,7 @@ app.post('/login',
         failureFlash: true })
 );
 
-app.get('/logout', function(req, res){
+app.get('/logout', function (req, res) {
     req.logout();
     res.redirect('/');
 });
@@ -113,3 +137,5 @@ app.get('/logout', function(req, res){
 http.createServer(app).listen(app.get('port'), function () {
     console.log("Express server listening on port " + app.get('port'));
 });
+
+
