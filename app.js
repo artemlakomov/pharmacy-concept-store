@@ -13,30 +13,31 @@ var express = require('express')
 
 passport.use(new localStrategy(
     function (username, password, done) {
-        console.log("Log in: " + username + " / " + password);
-        return done(null, { username: "dummy"});
-        /*User.findOne({ username: username }, function(err, user) {
-         if (err) { return done(err); }
-         if (!user) {
-         return done(null, false, { message: 'Incorrect username.' });
-         }
-         if (!user.validPassword(password)) {
-         return done(null, false, { message: 'Incorrect password.' });
-         }
-         return done(null, user);
-         });*/
+        var storage = require('./model/storage');
+        storage.Customer.findOne(
+            {$and: [
+                { email: username.toLowerCase()} ,
+                { password: password },
+                { activationCode: null}
+            ]},
+            function (err, cust) {
+                if (err || !cust) return done(null, false, { type : 'ERR_INCORRECT_PASSWORD' });
+                return done(null, cust);
+            });
     }
 ));
 
 passport.serializeUser(function (user, done) {
-    done(null, user.username);
+    done(null, user.email);
 });
 
 passport.deserializeUser(function (id, done) {
-    done(null, { username: "dummy"});
-    /*User.findById(id, function(err, user) {
-     done(err, user);
-     });*/
+    var storage = require('./model/storage');
+    storage.Customer.findOne({ email: id},
+        function (err, cust) {
+            done(err, cust);
+        }
+    );
 });
 
 var app = express();
@@ -104,7 +105,7 @@ app.configure(function () {
 
         var port = app.get('port');
         req.baseUrl = req.protocol + '://' + req.host;
-        if(port != '80') req.baseUrl += ':' + port;
+        if (port != '80') req.baseUrl += ':' + port;
 
         next();
     });
@@ -123,11 +124,32 @@ app.get('/signup', routes.signup);
 app.post('/signup', routes.signupComplete);
 
 app.get('/login', routes.login);
-app.post('/login',
-    passport.authenticate('local', { successRedirect: '/',
-        failureRedirect: '/login',
-        failureFlash: true })
-);
+app.post('/login', function(req, res) {
+    passport.authenticate('local', function(err, user, info) {
+
+        console.log(err);
+        console.log(user);
+        console.log(info);
+
+        if (err) {
+            res.err(res.__('LoginError'), err.toString());
+            return;
+        }
+
+        if (!user) {
+            res.err(res.__('LoginError'), res.__('LoginIncorrectCredentials'));
+            return;
+        }
+
+        req.logIn(user, function(err) {
+            if (err) {
+                res.err(res.__('LoginError'), err.toString());
+                return;
+            }
+            res.ok(res.__('LoginSuccess'), res.__('LoginSuccessRedirect'));
+        });
+    })(req, res);
+});
 
 app.get('/logout', function (req, res) {
     req.logout();

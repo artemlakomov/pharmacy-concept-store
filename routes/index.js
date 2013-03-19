@@ -1,4 +1,5 @@
 var mailer = require("../model/mailer");
+var passport = require('passport');
 
 exports.index = function (req, res) {
     res.render('index', { title: 'Express' });
@@ -23,8 +24,8 @@ exports.signupComplete = function (req, res) {
 
     storage.Customer.findOne({
         $or: [
-            { cardNumber: tc.cardNumber },
-            { email: tc.email }
+            { cardNumber: tc.cardNumber.toLowerCase() },
+            { email: tc.email.toLowerCase() }
         ]}, function (err, cust) {
 
         if (cust != null) {
@@ -32,6 +33,8 @@ exports.signupComplete = function (req, res) {
             return;
         }
 
+        tc.email = tc.email.toLowerCase();
+        tc.cardNumber = tc.cardNumber.toLowerCase();
         tc.activationCode = require('../model/randomstring').generate();
 
         tc.save(function (err) {
@@ -63,12 +66,12 @@ exports.activateComplete = function (req, res) {
 
     storage.Customer.findOne({ activationCode: req.body.code }, function (err, cust) {
 
-        if (cust == null) {
+        if (!cust) {
             res.err(res.__('ActivateErrorTitle'), res.__('ActivateErrorIncorrectCode'));
             return;
         }
 
-        cust.actvationCode = null;
+        cust.activationCode = null;
         cust.save(function (err) {
             if (err) {
                 res.err(res.__('ActivateErrorTitle'), err.toString());

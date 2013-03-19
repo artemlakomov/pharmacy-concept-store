@@ -19,7 +19,7 @@
 <div class="container-fluid fixed top-menu">
     <div id="content">
         <div id="login">
-            <form class="form-signin" method="post" action="index.html?lang=en&amp;menu_position=top-menu">
+            <form class="form-signin" method="post">
                 <label class="strong">${ __('LoginEmail')}</label>
                 <input type="text" name="username" class="input-block-level" placeholder="${ __('LoginEmail')}">
                 <label class="strong">${ __('LoginPassword')}</label>
