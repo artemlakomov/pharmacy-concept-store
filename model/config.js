@@ -8,7 +8,9 @@ exports.init = function () {
                 user: "mailer@integritum.eu",
                 pass: "21SbLD#81"
             }
-        }
+        },
+        ip: ['127.0.0.1'],
+        welcomePointsBonus : 20
     };
 };
 

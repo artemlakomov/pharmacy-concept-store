@@ -50,8 +50,20 @@
     "ActivateErrorIncorrectCode" : "<p>Пользователь с таким кодом активации не найден. Проверьте код на соответствие присланному в сообщении по электронной почте.</p>",
     "ActivateSuccessTitle" : "Активация учетной записи завершена!",
     "ActivateSuccessBody" : "<p>Ваша учетная запись активна. Теперь вы можете входить в систему используя свой адрес электронной почты и пароль.</p>",
+    "ActivateWelcomeBonus" : "Бонус при регистрации",
+    "ActivateWelcomeBonusSubject" : "Мы рады приветствовать Вас в программе лояльности Pharmacy CONCEPT CARD!",
     "LoginError" : "Ошибка входа в систему",
     "LoginIncorrectCredentials" : "Введенная комбинация адреса электронной почты и пароля не найдена.",
     "LoginSuccess" : "Вход в систему успешно выполнен",
-    "LoginSuccessRedirect" : "Происходит перенаправление..."
+    "LoginSuccessRedirect" : "Происходит перенаправление...",
+    "ForgotPasswordTitle" : "CONCEPT CARD",
+    "ForgotPasswordEmail" : "Адрес электронной почты",
+    "ForgotPasswordSend" : "Отправить",
+    "ForgotPassword" : "Забыли пароль?",
+    "ForgotPasswordSubtitle" : "Восстановление пароля к учетной записи",
+    "ForgotPasswordErrorTitle" : "Ошибка при восстановлении пароля",
+    "ForgotPasswordErrorNotFound" : "<p>Учетная запись, соответствующая введенному адресу электронной почты, не найдена.</p>",
+    "ForgotPasswordSuccessTitle" : "Восстановление пароля завершено",
+    "ForgotPasswordSuccessBody" : "<p>Ваш новый пароль был отправлен на указанный Вами адрес электронной почты. Если письмо долго не приходит - проверьте, пожалуйста, папки &quot;Спам&quot; и &quot;Нежелательная почта&quot;</p>",
+    "ApiErrorTitle" : "Ошибка API"
 }

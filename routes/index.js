@@ -1,5 +1,6 @@
 var mailer = require("../model/mailer");
 var passport = require('passport');
+var config = require('../model/config').init();
 
 exports.index = function (req, res) {
     res.render('index', { title: 'Express' });
@@ -77,7 +78,81 @@ exports.activateComplete = function (req, res) {
                 res.err(res.__('ActivateErrorTitle'), err.toString());
             } else {
                 res.ok(res.__('ActivateSuccessTitle'), res.__('ActivateSuccessBody'));
+                try {
+                   storage.addCustomerTransaction(
+                       cust.cardNumber,
+                       '',
+                       res.__('ActivateWelcomeBonus'),
+                       0,
+                       config.welcomePointsBonus,
+                       new Date(),
+                       function(err){
+                          if(err) console.error(err);
+                          else{
+                              mailer.sendWelcomeBonusEmail(cust, req, res, function(err){
+                                  if(err) console.error(err);
+                              });
+                          }
+                       }
+                   );
+                }
+                catch(e){
+                   console.error(e);
+                }
             }
         });
+    });
+};
+
+exports.forgotPassword = function (req, res) {
+    res.render('forgot-password', {
+        title: res.__('ForgotPasswordTitle') + ' - ' + res.__('ForgotPasswordSubtitle'),
+        code : req.query.code ? req.query.code : ''
+    });
+};
+
+exports.forgotPasswordComplete = function (req, res) {
+    var storage = require('../model/storage');
+    storage.Customer.findOne({ activationCode: null, email: req.body.email.toLowerCase() }, function (err, cust) {
+
+        if (!cust) {
+            res.err(res.__('ForgotPasswordErrorTitle'), res.__('ForgotPasswordErrorNotFound'));
+            return;
+        }
+
+        cust.password = require('../model/randomstring').generate(7);
+
+        cust.save(function (err) {
+            if (err) {
+                res.err(res.__('ForgotPasswordErrorTitle'), err.toString());
+            } else {
+                mailer.sendPasswordEmail(cust, req, res, function(err, response){
+                    if(err){
+                        res.err(res.__('ForgotPasswordErrorTitle'), err.toString());
+                    } else {
+                        res.ok(res.__('ForgotPasswordSuccessTitle'), res.__('ForgotPasswordSuccessBody'));
+                    }
+                });
+            }
+        });
+
+    });
+}
+
+/************** API routes **********************/
+exports.transaction = function(req, res){
+    if(config.ip.indexOf(req.ip) == -1){
+        res.send(403, 'Forbidden');
+        return;
+    }
+
+    var storage = require('../model/storage');
+    var t = new storage.Transaction(req.body);
+    t.save(function (err) {
+        if (err) {
+            res.err(res.__('ApiErrorTitle'), err.toString());
+        } else {
+            res.ok("API", "OK");
+        }
     });
 };

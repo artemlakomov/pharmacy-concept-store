@@ -38,5 +38,24 @@ exports.Customer = mongoose.model('Customer', customerSchema);
 
 /************** Transaction **********************/
 var transactionSchema = mongoose.Schema({
-   amount : { type : Number, required : true }
+   cardNumber : { type : String, required : true },
+    description : { type : String, required : true },
+   receiptNumber : { type : String, required : false },
+   amount : { type : Number, required : true },
+   points : { type : Number, required : true },
+   date : { type : Date, required : true }
 });
+
+exports.addCustomerTransaction = function(cardNumber, receiptNumber, description, amount, points, date, next){
+    var t = new exports.Transaction();
+    t.cardNumber = cardNumber;
+    t.description = description;
+    t.receiptNumber = receiptNumber;
+    t.amount = amount;
+    t.points = points;
+    t.date = date;
+
+    t.save(function (err) {
+        if(next)next(err);
+    });
+}

@@ -103,6 +103,10 @@ app.configure(function () {
             });
         };
 
+        res.apiauth = function(){
+            req.ip
+        }
+
         var port = app.get('port');
         req.baseUrl = req.protocol + '://' + req.host;
         if (port != '80') req.baseUrl += ':' + port;
@@ -158,6 +162,12 @@ app.get('/logout', function (req, res) {
 
 app.get('/activate', routes.activate);
 app.post('/activate', routes.activateComplete);
+
+app.get('/forgotpassword', routes.forgotPassword);
+app.post('/forgotpassword', routes.forgotPasswordComplete);
+
+
+app.get('/api/transaction', routes.transaction);
 
 http.createServer(app).listen(app.get('port'), function () {
     console.log("Express server listening on port " + app.get('port'));
