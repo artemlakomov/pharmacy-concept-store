@@ -9,7 +9,8 @@ var express = require('express')
     , path = require('path')
     , passport = require('passport')
     , localStrategy = require('passport-local').Strategy
-    , i18n = require("i18n");
+    , i18n = require("i18n")
+    , login = require("connect-ensure-login");
 
 passport.use(new localStrategy(
     function (username, password, done) {
@@ -66,7 +67,7 @@ app.configure(function () {
     app.use(express.logger('dev'));
     app.use(express.bodyParser());
     app.use(express.methodOverride());
-    app.use(express.cookieParser('2hH3lLkohj6#'));
+    app.use(express.cookieParser());
     app.use(express.session({ secret: '2hH3lLkohj6#345gjh3hh2' }));
     app.use(passport.initialize());
     app.use(passport.session());
@@ -103,10 +104,6 @@ app.configure(function () {
             });
         };
 
-        res.apiauth = function(){
-            req.ip
-        }
-
         var port = app.get('port');
         req.baseUrl = req.protocol + '://' + req.host;
         if (port != '80') req.baseUrl += ':' + port;
@@ -122,7 +119,7 @@ app.configure('development', function () {
     app.use(express.errorHandler());
 });
 
-app.get('/', passport.authorize('local', { failureRedirect: '/login' }), routes.index);
+app.get('/', login.ensureLoggedIn("/login"), routes.index);
 
 app.get('/signup', routes.signup);
 app.post('/signup', routes.signupComplete);
@@ -156,7 +153,7 @@ app.post('/login', function(req, res) {
 });
 
 app.get('/logout', function (req, res) {
-    req.logout();
+    req.logOut();
     res.redirect('/');
 });
 

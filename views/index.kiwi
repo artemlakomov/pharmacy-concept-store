@@ -1,11 +1,111 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title></title>
+<!--[if lt IE 7]>
+<html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html> <!--<![endif]-->
+{{include "head"}}
+<body>
+<div class="container-fluid fixed top-menu">
+    <div id="content">
 
-  </head>
-  <body>
-    <h1>
-    <p>Welcome to </p>
-  </body>
+        <ul class="breadcrumb">
+            <li><a href="/" class="glyphicons home"><i></i> ${__('CommonHome')}</a></li>
+        </ul>
+        <div class="separator bottom"></div>
+
+        <div class="heading-buttons">
+            <h3 class="glyphicons coins"><i></i> ${__('DashboardTitle')}<span class="hidden-phone">| ${__('DashboardSubtitle')}</span></h3>
+
+            <div class="buttons pull-right">
+                <a href="/logout" class="btn btn-default btn-icon glyphicons circle_arrow_right"><i></i> ${__('DashboardLogout')}</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="separator line"></div>
+
+        <div class="widget widget-4">
+            <div class="widget-head">
+                <h4 class="heading">${__('DashboardTransactions')}</h4>
+            </div>
+            <div class="widget-body" style="padding: 10px 0;">
+                <div class="row-fluid">
+                    <div class="span6">
+                        <a href="#/bonus" class="widget-stats">
+                            <span class="txt">${__('DashboardTransactionsPoints', points)|raw}</span>
+                            <span class="glyphicons edit"><i></i></span>
+                            <div class="clearfix"></div>
+                        </a>
+                    </div>
+                    <div class="span6">
+                        <a href="#/history" class="widget-stats">
+                            <span class="txt">${__('DashboardTransactionsHistory')|raw}</span>
+                            <span class="glyphicons notes"><i></i></span>
+                            <div class="clearfix"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="separator line"></div>
+
+        <div class="widget widget-4">
+            <div class="widget-head">
+                <h4 class="heading">${__('DashboardProfile')}</h4>
+            </div>
+            <div class="widget-body" style="padding: 10px 0;">
+                <div class="row-fluid">
+                    <div class="span6">
+                        <a href="#/profile" class="widget-stats">
+                            <span class="txt">${__('DashboardProfileEdit')|raw}</span>
+                            <span class="glyphicons edit"><i></i></span>
+                            <div class="clearfix"></div>
+                        </a>
+                    </div>
+                    <div class="span6">
+                        <a href="#/change-password" class="widget-stats">
+                            <span class="txt">${__('DashboardPasswordChange')|raw}</span>
+                            <span class="glyphicons keys"><i></i></span>
+                            <div class="clearfix"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="separator line"></div>
+
+        <div class="widget widget-4">
+            <div class="widget-head">
+                <h4 class="heading">${__('DashboardCard')}</h4>
+            </div>
+            <div class="widget-body" style="padding: 10px 0;">
+                <div class="row-fluid">
+                    <div class="span6">
+                        <a href="#/card-block" class="widget-stats">
+                            <span class="txt">${__('DashboardCardBlock')|raw}</span>
+                            <span class="glyphicons ban"><i></i></span>
+                            <div class="clearfix"></div>
+                        </a>
+                    </div>
+                    <div class="span6">
+                        <a href="#/card-replace" class="widget-stats">
+                            <span class="txt">${__('DashboardCardReplace')|raw}</span>
+                            <span class="glyphicons roundabout"><i></i></span>
+                            <div class="clearfix"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+    </div>
+</div>
+{{include "footer"}}
+<script src="js/index.js" type="text/javascript"></script>
+</body>
 </html>

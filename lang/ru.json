@@ -65,5 +65,17 @@
     "ForgotPasswordErrorNotFound" : "<p>Учетная запись, соответствующая введенному адресу электронной почты, не найдена.</p>",
     "ForgotPasswordSuccessTitle" : "Восстановление пароля завершено",
     "ForgotPasswordSuccessBody" : "<p>Ваш новый пароль был отправлен на указанный Вами адрес электронной почты. Если письмо долго не приходит - проверьте, пожалуйста, папки &quot;Спам&quot; и &quot;Нежелательная почта&quot;</p>",
-    "ApiErrorTitle" : "Ошибка API"
+    "ApiErrorTitle" : "Ошибка API",
+    "DashboardTitle" : "CONCEPT CARD",
+    "DashboardSubtitle" : "Ваш личный кабинет",
+    "DashboardLogout" : "Выйти",
+    "DashboardProfile" : "Мой профиль",
+    "DashboardProfileEdit" : "<strong>ПРОФИЛЬ</strong>редактировать",
+    "DashboardPasswordChange" : "<strong>ПАРОЛЬ</strong>изменить",
+    "DashboardTransactionsPoints" : "<strong>%d</strong>бонусных баллов",
+    "DashboardTransactionsHistory" : "<strong>ИСТОРИЯ</strong>покупок",
+    "DashboardTransactions" : "Мои покупки",
+    "DashboardCard" : "Моя карта",
+    "DashboardCardBlock" : "<strong>БЛОКИРОВАТЬ</strong>бонусную карту",
+    "DashboardCardReplace" : "<strong>ЗАМЕНИТЬ</strong>бонусную карту"
 }

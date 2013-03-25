@@ -52,6 +52,8 @@
 	<!-- LESS 2 CSS -->
 	<script src="theme/scripts/less-1.3.3.min.js"></script>
 
+    <!-- Sammy.js -->
+    <script src="theme/scripts/sammy/sammy-latest.min.js"></script>
 
 	<!--[if IE]><script type="text/javascript" src="theme/scripts/excanvas/excanvas.js"></script><![endif]-->
 	<!--[if lt IE 8]><script type="text/javascript" src="theme/scripts/json2.js"></script><![endif]-->

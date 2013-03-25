@@ -3,7 +3,11 @@ var passport = require('passport');
 var config = require('../model/config').init();
 
 exports.index = function (req, res) {
-    res.render('index', { title: 'Express' });
+    var points = 100;
+    res.render('index', {
+        title: res.__('DashboardTitle') + ' - ' + res.__('DashboardSubtitle'),
+        points: points
+    });
 };
 
 exports.login = function (req, res) {
