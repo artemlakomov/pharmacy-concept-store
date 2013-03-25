@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API tests</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+           $('#testTransactions').click(function(){
+              for(var i = 0; i < 100; i++){
+                  var data = {
+                      cardNumber: '435435435435',
+                      description: 'Test transaction via fillin tool',
+                      receiptNumber: '0000-0000-0001',
+                      salesPoint: 'Internet',
+                      amount: -11.10,
+                      points: (Math.round(Math.random()) * 2 - 1) * Math.round(Math.random() * 100),
+                      date: new Date()
+                  };
+                  $.post('/api/transaction',data, function(result){
+                      console.log(result);
+                  });
+              }
+           });
+        });
+    </script>
+</head>
+<body>
+   <div>
+       <textarea id="messages">
+       </textarea>
+       <button id="testTransactions">Test transactions API</button>
+   </div>
+</body>
+</html>

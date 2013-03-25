@@ -11,101 +11,190 @@
 <body>
 <div class="container-fluid fixed top-menu">
     <div id="content">
-
-        <ul class="breadcrumb">
-            <li><a href="/" class="glyphicons home"><i></i> ${__('CommonHome')}</a></li>
-        </ul>
-        <div class="separator bottom"></div>
-
-        <div class="heading-buttons">
-            <h3 class="glyphicons coins"><i></i> ${__('DashboardTitle')}<span class="hidden-phone">| ${__('DashboardSubtitle')}</span></h3>
-
-            <div class="buttons pull-right">
-                <a href="/logout" class="btn btn-default btn-icon glyphicons circle_arrow_right"><i></i> ${__('DashboardLogout')}</a>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-        <div class="separator line"></div>
-
-        <div class="widget widget-4">
-            <div class="widget-head">
-                <h4 class="heading">${__('DashboardTransactions')}</h4>
-            </div>
-            <div class="widget-body" style="padding: 10px 0;">
-                <div class="row-fluid">
-                    <div class="span6">
-                        <a href="#/bonus" class="widget-stats">
-                            <span class="txt">${__('DashboardTransactionsPoints', points)|raw}</span>
-                            <span class="glyphicons edit"><i></i></span>
-                            <div class="clearfix"></div>
-                        </a>
-                    </div>
-                    <div class="span6">
-                        <a href="#/history" class="widget-stats">
-                            <span class="txt">${__('DashboardTransactionsHistory')|raw}</span>
-                            <span class="glyphicons notes"><i></i></span>
-                            <div class="clearfix"></div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="separator line"></div>
-
-        <div class="widget widget-4">
-            <div class="widget-head">
-                <h4 class="heading">${__('DashboardProfile')}</h4>
-            </div>
-            <div class="widget-body" style="padding: 10px 0;">
-                <div class="row-fluid">
-                    <div class="span6">
-                        <a href="#/profile" class="widget-stats">
-                            <span class="txt">${__('DashboardProfileEdit')|raw}</span>
-                            <span class="glyphicons edit"><i></i></span>
-                            <div class="clearfix"></div>
-                        </a>
-                    </div>
-                    <div class="span6">
-                        <a href="#/change-password" class="widget-stats">
-                            <span class="txt">${__('DashboardPasswordChange')|raw}</span>
-                            <span class="glyphicons keys"><i></i></span>
-                            <div class="clearfix"></div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="separator line"></div>
-
-        <div class="widget widget-4">
-            <div class="widget-head">
-                <h4 class="heading">${__('DashboardCard')}</h4>
-            </div>
-            <div class="widget-body" style="padding: 10px 0;">
-                <div class="row-fluid">
-                    <div class="span6">
-                        <a href="#/card-block" class="widget-stats">
-                            <span class="txt">${__('DashboardCardBlock')|raw}</span>
-                            <span class="glyphicons ban"><i></i></span>
-                            <div class="clearfix"></div>
-                        </a>
-                    </div>
-                    <div class="span6">
-                        <a href="#/card-replace" class="widget-stats">
-                            <span class="txt">${__('DashboardCardReplace')|raw}</span>
-                            <span class="glyphicons roundabout"><i></i></span>
-                            <div class="clearfix"></div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <br>
-
     </div>
 </div>
 {{include "footer"}}
+<!-- HISTORY PAGE TEMPLATE -->
+<script type="text/html" id="history">
+    <ul class="breadcrumb">
+        <li><a href="/" class="glyphicons home"><i></i> ${__('CommonHome')}</a></li>
+        <li class="divider"></li>
+        <li>${__('DashboardTransactions')}</li>
+    </ul>
+    <div class="separator bottom"></div>
+    <div class="widget widget-4 finances_summary">
+        <div class="widget-head">
+            <h4 class="heading">${__('HistoryTitle')}</h4>
+        </div>
+        <div class="widget-body" style="padding: 10px 0;">
+            <div class="row-fluid">
+                <div class="span12">
+                    <table id="historyTable" class="table table-responsive block table-condensed table-primary table-vertical-center table-thead-simple">
+                        <thead>
+                        <tr>
+                            <th class="center">${__('HistoryDate')}</th>
+                            <th>${__('HistoryReceiptNo')}</th>
+                            <th class="center">${__('HistoryDescription')}</th>
+                            <th class="center">${__('HistoryAmount')}</th>
+                            <th class="center">${__('HistoryBonusPoints')}</th>
+                        </tr>
+                        </thead>
+                        <tbody data-bind="foreach: data">
+                        <tr class="selectable">
+                            <td class="center"><span class="label label-important" data-bind="dateString: date, datePattern: 'dd.MM.yyyy'" ></span></td>
+                            <td data-bind="text : receiptNumber" class="important"></td>
+                            <td data-bind="text : description" class="center"></td>
+                            <td data-bind="text : amount" class="center">€617.00</td>
+                            <td data-bind="text : points" class="center"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <a href="#/bonus" class="glyphicons list single"><i></i> ${__('HistorySummary')}</a>
+        </div>
+    </div>
+</script>
+
+<!-- BONUS PAGE TEMPLATE -->
+<script type="text/html" id="bonus">
+    <ul class="breadcrumb">
+        <li><a href="/" class="glyphicons home"><i></i> ${__('CommonHome')}</a></li>
+        <li class="divider"></li>
+        <li>${__('DashboardTransactions')}</li>
+    </ul>
+    <div class="separator bottom"></div>
+    <div class="widget widget-4 finances_summary">
+        <div class="widget-head">
+            <h4 class="heading">${__('BonusTitle')}</h4>
+        </div>
+        <div class="widget-body" style="padding: 10px 0;">
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="well">
+                        ${__('BonusEarned')}<strong data-bind="text : data.earned">0.00</strong>
+                    </div>
+                    <div class="separator bottom center">
+                        <span class="glyphicons flash standard"><i></i></span>
+                    </div>
+                    <div class="well">
+                        ${__('BonusSpent')}<strong data-bind="text : data.spent">0.00</strong>
+                    </div>
+                    <div class="separator bottom center">
+                        <span class="glyphicons flash standard"><i></i></span>
+                    </div>
+                    <div class="well">
+                        ${__('BonusBalance')}<strong data-bind="text : data.balance">0.00</strong>
+                    </div>
+                </div>
+            </div>
+            <a href="#/history" class="glyphicons list single"><i></i> ${__('BonusDetails')}</a>
+        </div>
+    </div>
+</script>
+
+<!-- DASHBOARD TEMPLATE -->
+<script type="text/html" id="dashboard">
+    <ul class="breadcrumb">
+        <li><a href="/" class="glyphicons home"><i></i> ${__('CommonHome')}</a></li>
+    </ul>
+    <div class="separator bottom"></div>
+
+    <div class="heading-buttons">
+        <h3 class="glyphicons coins"><i></i> ${__('DashboardTitle')}<span class="hidden-phone">| ${__('DashboardSubtitle')}</span>
+        </h3>
+
+        <div class="buttons pull-right">
+            <a href="/logout" class="btn btn-default btn-icon glyphicons circle_arrow_right"><i></i>
+                ${__('DashboardLogout')}</a>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="separator line"></div>
+
+    <div class="widget widget-4">
+        <div class="widget-head">
+            <h4 class="heading">${__('DashboardTransactions')}</h4>
+        </div>
+        <div class="widget-body" style="padding: 10px 0;">
+            <div class="row-fluid">
+                <div class="span6">
+                    <a href="#/bonus" class="widget-stats">
+                        <span class="txt">${__('DashboardTransactionsPoints', points)|raw}</span>
+                        <span class="glyphicons edit"><i></i></span>
+
+                        <div class="clearfix"></div>
+                    </a>
+                </div>
+                <div class="span6">
+                    <a href="#/history" class="widget-stats">
+                        <span class="txt">${__('DashboardTransactionsHistory')|raw}</span>
+                        <span class="glyphicons notes"><i></i></span>
+
+                        <div class="clearfix"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="separator line"></div>
+
+    <div class="widget widget-4">
+        <div class="widget-head">
+            <h4 class="heading">${__('DashboardProfile')}</h4>
+        </div>
+        <div class="widget-body" style="padding: 10px 0;">
+            <div class="row-fluid">
+                <div class="span6">
+                    <a href="#/profile" class="widget-stats">
+                        <span class="txt">${__('DashboardProfileEdit')|raw}</span>
+                        <span class="glyphicons edit"><i></i></span>
+
+                        <div class="clearfix"></div>
+                    </a>
+                </div>
+                <div class="span6">
+                    <a href="#/change-password" class="widget-stats">
+                        <span class="txt">${__('DashboardPasswordChange')|raw}</span>
+                        <span class="glyphicons keys"><i></i></span>
+
+                        <div class="clearfix"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="separator line"></div>
+
+    <div class="widget widget-4">
+        <div class="widget-head">
+            <h4 class="heading">${__('DashboardCard')}</h4>
+        </div>
+        <div class="widget-body" style="padding: 10px 0;">
+            <div class="row-fluid">
+                <div class="span6">
+                    <a href="#/card-block" class="widget-stats">
+                        <span class="txt">${__('DashboardCardBlock')|raw}</span>
+                        <span class="glyphicons ban"><i></i></span>
+
+                        <div class="clearfix"></div>
+                    </a>
+                </div>
+                <div class="span6">
+                    <a href="#/card-replace" class="widget-stats">
+                        <span class="txt">${__('DashboardCardReplace')|raw}</span>
+                        <span class="glyphicons roundabout"><i></i></span>
+
+                        <div class="clearfix"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</script>
+
+<!-- Initialization javascript -->
 <script src="js/index.js" type="text/javascript"></script>
 </body>
 </html>

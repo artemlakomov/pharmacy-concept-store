@@ -160,3 +160,31 @@ exports.transaction = function(req, res){
         }
     });
 };
+
+/************** User account routes *********************/
+exports.bonus = function (req, res) {
+    var storage = require('../model/storage');
+    storage.Transaction.find({ cardNumber: req.user.cardNumber }, function(err, data){
+        if (err) {
+            res.err(res.__('ApiErrorTitle'), err.toString());
+        } else {
+            var result = { earned : 0, spent : 0 };
+            data.forEach(function(item){
+               if(item.points > 0) result.earned += item.points;
+               if(item.points < 0) result.spent += Math.abs(item.points);
+            });
+            res.send(result);
+        }
+    });
+};
+
+exports.history = function (req, res) {
+    var storage = require('../model/storage');
+    storage.Transaction.find({ cardNumber: req.user.cardNumber }).sort('-date').execFind(function(err, data){
+        if (err) {
+            res.err(res.__('ApiErrorTitle'), err.toString());
+        } else {
+            res.send(data);
+        }
+    });
+};

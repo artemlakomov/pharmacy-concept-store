@@ -1,5 +1,9 @@
-<!-- JQueryUI v1.9.2 -->
+    <!-- JQueryUI v1.9.2 -->
  	<script src="theme/scripts/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js"></script>
+
+    <!-- Data Tables -->
+    <script src="theme/scripts/DataTables/media/js/jquery.dataTables.min.js"></script>
+    <script src="theme/scripts/DataTables/media/js/DT_bootstrap.js"></script>
 
  	<!-- JQueryUI Touch Punch -->
  	<!-- small hack that enables the use of touch events on sites using the jQuery UI user interface library -->
@@ -36,8 +40,6 @@
  	<script src="bootstrap/extend/jasny-bootstrap/js/jasny-bootstrap.min.js" type="text/javascript"></script>
  	<script src="bootstrap/extend/jasny-bootstrap/js/bootstrap-fileupload.js" type="text/javascript"></script>
  	<script src="bootstrap/extend/bootbox.js" type="text/javascript"></script>
- 	<script src="bootstrap/extend/bootstrap-wysihtml5/js/wysihtml5-0.3.0_rc2.min.js" type="text/javascript"></script>
- 	<script src="bootstrap/extend/bootstrap-wysihtml5/js/bootstrap-wysihtml5-0.0.2.js" type="text/javascript"></script>
 
  	<!-- Custom Onload Script -->
  	<script src="theme/scripts/load.js"></script>

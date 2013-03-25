@@ -164,7 +164,10 @@ app.get('/forgotpassword', routes.forgotPassword);
 app.post('/forgotpassword', routes.forgotPasswordComplete);
 
 
-app.get('/api/transaction', routes.transaction);
+app.post('/api/transaction', routes.transaction);
+
+app.get('/bonus', login.ensureLoggedIn("/login"), routes.bonus);
+app.get('/history', login.ensureLoggedIn("/history"), routes.history);
 
 http.createServer(app).listen(app.get('port'), function () {
     console.log("Express server listening on port " + app.get('port'));

@@ -46,6 +46,10 @@
 	<!-- MiniColors -->
 	<link rel="stylesheet" media="screen" href="theme/scripts/jquery-miniColors/jquery.miniColors.css" />
 
+    <!-- Data Tables -->
+    <link rel="stylesheet" href="theme/scripts/DataTables/media/css/jquery.dataTables.css" />
+    <link rel="stylesheet" href="theme/scripts/DataTables/media/css/DT_bootstrap.css" />
+
 	<!-- Theme -->
 	<link rel="stylesheet" href="theme/css/style.min.css?1363027109" />
 
@@ -54,6 +58,12 @@
 
     <!-- Sammy.js -->
     <script src="theme/scripts/sammy/sammy-latest.min.js"></script>
+
+    <!-- Knockout.js -->
+    <script src="theme/scripts/knockout/knockout-2.2.1.js"></script>
+
+    <!-- Date.js -->
+    <script src="theme/scripts/date.js"></script>
 
 	<!--[if IE]><script type="text/javascript" src="theme/scripts/excanvas/excanvas.js"></script><![endif]-->
 	<!--[if lt IE 8]><script type="text/javascript" src="theme/scripts/json2.js"></script><![endif]-->
