@@ -14,6 +14,142 @@
     </div>
 </div>
 {{include "footer"}}
+<!-- PROFILE PAGE TEMPLATE -->
+<script type="text/html" id="profile">
+    <ul class="breadcrumb">
+        <li><a href="/" class="glyphicons home"><i></i> ${__('CommonHome')}</a></li>
+        <li class="divider"></li>
+        <li>${__('ProfileTitle')}</li>
+    </ul>
+    <div class="separator bottom"></div>
+
+    <h3 class="glyphicons show_thumbnails_with_lines"><i></i> ${__('ProfileTitle')}</h3>
+
+    <form class="form-horizontal" style="margin-bottom: 0;" id="profileForm" action="/profile-update" method="post" autocomplete="off">
+        <input type="hidden" name="dateOfBirth" value="" />
+        <div class="row-fluid">
+            <div class="span6">
+                <div class="control-group">
+                    <label class="control-label" for="cardNumber">${__('SignupCardNumber')}</label>
+
+                    <div class="controls"><input readonly="readonly" data-bind="value: data.cardNumber"  class="span12" id="cardNumber" name="cardNumber" type="text"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="email">${__('SignupEmail')}</label>
+
+                    <div class="controls"><input readonly="readonly" data-bind="value: data.email"   class="span12" id="email" name="email" type="text"/></div>
+                </div>
+            </div>
+            <div class="span6">
+                <div class="control-group">
+                    <label class="control-label" for="PIN">${__('SignupPIN')}</label>
+
+                    <div class="controls"><input data-bind="value: data.PIN"   class="span12" id="PIN" name="PIN" type="text"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="separator line"/>
+        <div class="row-fluid">
+            <div class="span6">
+                <div class="control-group">
+                    <label class="control-label" for="firstName">${__('SignupFirstName')}</label>
+
+                    <div class="controls"><input data-bind="value: data.firstName"   class="span12" id="firstName" name="firstName" type="text"/></div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="lastName">${__('SignupLastName')}</label>
+
+                    <div class="controls"><input data-bind="value: data.lastName"   class="span12" id="lastName" name="lastName" type="text"/></div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">${__('SignupGender')}</label>
+                    <div class="controls">
+                        <input type="radio" data-bind="checked : data.gender == 'M'" class="radio" name="gender" value="M" />
+                        <label class="radio">
+                            ${__('SignupGenderMale')}
+                        </label>
+
+                        <input type="radio" data-bind="checked: data.gender == 'F'" class="radio" name="gender" value="F"/>
+                        <label class="radio">
+                            ${__('SignupGenderFemale')}
+                        </label>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">${__('SignupDateOfBirth')}</label>
+                    <div class="controls">
+                        <select class="span3" name="dobDay">
+                            <option value="">${__('CommonPleaseSelect')}</option>
+                        </select>
+                        <select class="span6" name="dobMonth">
+                            <option value="">${__('CommonPleaseSelect')}</option>
+                        </select>
+                        <select class="span3" name="dobYear">
+                            <option value="">${__('CommonPleaseSelect')}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="city">${__('SignupCity')}</label>
+                    <div class="controls"><input data-bind="value: data.city"   class="span12" id="city" name="city" type="text"/></div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="address">${__('SignupAddress')}</label>
+                    <div class="controls"><input data-bind="value: data.address"   class="span12" id="address" name="address" type="text"/></div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="phone">${__('SignupPhone')}</label>
+                    <div class="controls"><input data-bind="value: data.address"   class="span12" id="phone" name="phone" type="text"/></div>
+                </div>
+            </div>
+            <div class="span6">
+                <div class="control-group">
+                    <label class="control-label" for="activity">${__('SignupActivity')}</label>
+                    <div class="controls"><input data-bind="value: data.activity"   class="span12" id="activity" name="activity" type="text"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="secretQuestion">${__('SignupSecretQuestion')}</label>
+                    <div class="controls"><input data-bind="value: data.secretQuestion"   class="span12" id="secretQuestion" name="secretQuestion" type="text"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="secretAnswer">${__('SignupSecretAnswer')}</label>
+                    <div class="controls"><input data-bind="value: data.secretAnswer"   class="span12" id="secretAnswer" name="secretAnswer" type="text"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="separator line"/>
+
+        <div class="row-fluid uniformjs">
+            <div class="span12">
+                <div id="newsletter_topics">
+                    <h4>${__('SignupNewsletters')}</h4>
+                    <p>${__('SignupNewslettersOptions')}</p>
+                    <label for="contactByEmail">
+                        <input data-bind="checked : contactByEmail" type="checkbox" id="contactByEmail" value="true" name="contactByEmail"/>
+                        ${__('SignupNewsletterEmail')}
+                    </label>
+                    <label for="contactBySMS">
+                        <input data-bind="checked : contactBySMS" type="checkbox" id="contactBySMS" value="true" name="contactBySMS"/>
+                        ${__('SignupNewsletterSMS')}
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-icon btn-primary glyphicons circle_ok"><i></i>${__('ProfileSave')}</button>
+        </div>
+
+    </form>
+</script>
+
 <!-- HISTORY PAGE TEMPLATE -->
 <script type="text/html" id="history">
     <ul class="breadcrumb">
@@ -194,7 +330,23 @@
     <br>
 </script>
 
+<!-- jQuery Validate -->
+<script src="theme/scripts/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
+<script src="theme/scripts/jquery-form/jquery.form.js" type="text/javascript"></script>s
+
 <!-- Initialization javascript -->
 <script src="js/index.js" type="text/javascript"></script>
+<div id="modal" class="modal hide fade" role="dialog">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3></h3>
+    </div>
+    <div class="modal-body">
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-block btn-icon glyphicons circle_exclamation_mark" data-dismiss="modal"><i></i> Закрыть</button>
+        <button class="btn btn-block btn-primary btn-icon glyphicons ok"><i></i> Продолжить</button>
+    </div>
+</div>
 </body>
 </html>

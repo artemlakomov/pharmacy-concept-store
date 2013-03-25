@@ -2,15 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="436ce417-7b6e-40d6-88df-758c66b99548" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/test/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/activate.js" afterPath="$PROJECT_DIR$/public/js/activate.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/footer.kiwi" afterPath="$PROJECT_DIR$/views/footer.kiwi" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/head.kiwi" afterPath="$PROJECT_DIR$/views/head.kiwi" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/forgot-password.js" afterPath="$PROJECT_DIR$/public/js/forgot-password.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/index.js" afterPath="$PROJECT_DIR$/public/js/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/index.js" afterPath="$PROJECT_DIR$/routes/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/index.kiwi" afterPath="$PROJECT_DIR$/views/index.kiwi" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/login.js" afterPath="$PROJECT_DIR$/public/js/login.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lang/ru.json" afterPath="$PROJECT_DIR$/lang/ru.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/storage.js" afterPath="$PROJECT_DIR$/model/storage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/signup.js" afterPath="$PROJECT_DIR$/public/js/signup.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="pharmacy-concept-store.iws" />
@@ -18,9 +18,9 @@
     <file path="/Dummy.txt" changelist="436ce417-7b6e-40d6-88df-758c66b99548" time="1364199019977" ignored="false" />
     <file path="/package.json" changelist="436ce417-7b6e-40d6-88df-758c66b99548" time="1363175764347" ignored="false" />
     <file path="/config.js" changelist="436ce417-7b6e-40d6-88df-758c66b99548" time="1364059481439" ignored="false" />
-    <file path="/app.js" changelist="436ce417-7b6e-40d6-88df-758c66b99548" time="1364228211859" ignored="false" />
-    <file path="/index.js" changelist="436ce417-7b6e-40d6-88df-758c66b99548" time="1364230978814" ignored="false" />
-    <file path="/ru.json" changelist="436ce417-7b6e-40d6-88df-758c66b99548" time="1364230471770" ignored="false" />
+    <file path="/app.js" changelist="436ce417-7b6e-40d6-88df-758c66b99548" time="1364235192828" ignored="false" />
+    <file path="/index.js" changelist="436ce417-7b6e-40d6-88df-758c66b99548" time="1364235120887" ignored="false" />
+    <file path="/ru.json" changelist="436ce417-7b6e-40d6-88df-758c66b99548" time="1364232466388" ignored="false" />
     <file path="/head.hjs" changelist="436ce417-7b6e-40d6-88df-758c66b99548" time="1363325789709" ignored="false" />
     <file path="/login.hjs" changelist="436ce417-7b6e-40d6-88df-758c66b99548" time="1363348864352" ignored="false" />
     <file path="/login.kiwi" changelist="436ce417-7b6e-40d6-88df-758c66b99548" time="1364064024240" ignored="false" />
@@ -29,17 +29,17 @@
     <file path="/model.js" changelist="436ce417-7b6e-40d6-88df-758c66b99548" time="1363362331107" ignored="false" />
     <file path="/signup.kiwi" changelist="436ce417-7b6e-40d6-88df-758c66b99548" time="1363635158054" ignored="false" />
     <file path="/head.kiwi" changelist="436ce417-7b6e-40d6-88df-758c66b99548" time="1364230866210" ignored="false" />
-    <file path="/signup.js" changelist="436ce417-7b6e-40d6-88df-758c66b99548" time="1363635313676" ignored="false" />
+    <file path="/signup.js" changelist="436ce417-7b6e-40d6-88df-758c66b99548" time="1364234819569" ignored="false" />
     <file path="/storage.js" changelist="436ce417-7b6e-40d6-88df-758c66b99548" time="1364226395055" ignored="false" />
     <file path="/mailer.js" changelist="436ce417-7b6e-40d6-88df-758c66b99548" time="1364062612967" ignored="false" />
     <file path="/signup-confirmation.kiwi" changelist="436ce417-7b6e-40d6-88df-758c66b99548" time="1363621326473" ignored="false" />
     <file path="/activate.kiwi" changelist="436ce417-7b6e-40d6-88df-758c66b99548" time="1363639363799" ignored="false" />
-    <file path="/activate.js" changelist="436ce417-7b6e-40d6-88df-758c66b99548" time="1363639486387" ignored="false" />
+    <file path="/activate.js" changelist="436ce417-7b6e-40d6-88df-758c66b99548" time="1364235011314" ignored="false" />
     <file path="/activation-bonus.kiwi" changelist="436ce417-7b6e-40d6-88df-758c66b99548" time="1364059763628" ignored="false" />
     <file path="/forgot-password.kiwi" changelist="436ce417-7b6e-40d6-88df-758c66b99548" time="1364062816220" ignored="false" />
-    <file path="/forgot-password.js" changelist="436ce417-7b6e-40d6-88df-758c66b99548" time="1364061572664" ignored="false" />
-    <file path="/login.js" changelist="436ce417-7b6e-40d6-88df-758c66b99548" time="1364063934655" ignored="false" />
-    <file path="/index.kiwi" changelist="436ce417-7b6e-40d6-88df-758c66b99548" time="1364230960003" ignored="false" />
+    <file path="/forgot-password.js" changelist="436ce417-7b6e-40d6-88df-758c66b99548" time="1364234948419" ignored="false" />
+    <file path="/login.js" changelist="436ce417-7b6e-40d6-88df-758c66b99548" time="1364234904288" ignored="false" />
+    <file path="/index.kiwi" changelist="436ce417-7b6e-40d6-88df-758c66b99548" time="1364234241995" ignored="false" />
     <file path="/index.html" changelist="436ce417-7b6e-40d6-88df-758c66b99548" time="1364226063609" ignored="false" />
     <file path="/footer.kiwi" changelist="436ce417-7b6e-40d6-88df-758c66b99548" time="1364230796324" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -64,7 +64,7 @@
       <file leaf-file-name="ru.json" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lang/ru.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="91" column="44" selection-start="5242" selection-end="5242" vertical-scroll-proportion="-11.346154">
+            <state line="93" column="16" selection-start="5281" selection-end="5292" vertical-scroll-proportion="-11.346154">
               <folding />
             </state>
           </provider>
@@ -73,7 +73,7 @@
       <file leaf-file-name="index.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="182" column="73" selection-start="5895" selection-end="5895" vertical-scroll-proportion="0.0">
+            <state line="196" column="19" selection-start="6213" selection-end="6213" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#162#323#0" expanded="false" />
                 <element signature="e#362#435#0" expanded="false" />
@@ -88,10 +88,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="169" column="64" selection-start="4749" selection-end="4749" vertical-scroll-proportion="0.0">
+            <state line="171" column="8" selection-start="4831" selection-end="4831" vertical-scroll-proportion="0.6304348">
               <folding />
             </state>
           </provider>
@@ -100,7 +100,7 @@
       <file leaf-file-name="storage.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/storage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="47" selection-start="1464" selection-end="1464" vertical-scroll-proportion="0.0">
+            <state line="31" column="18" selection-start="1066" selection-end="1080" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -109,61 +109,25 @@
       <file leaf-file-name="index.kiwi" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/index.kiwi">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="43" selection-start="1020" selection-end="1020" vertical-scroll-proportion="-4.576923">
+            <state line="146" column="27" selection-start="7329" selection-end="7329" vertical-scroll-proportion="-5.4615383">
               <folding>
-                <element signature="n#style#0;n#div#1;n#div#1;n#script#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#form#0;n#script#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#1;n#script#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#3;n#script#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#5;n#script#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#7;n#script#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#script#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="tag#script#3;tag#body#0;tag#html#0" expanded="false" />
+                <element signature="n#style#0;n#div#1;n#div#3;n#script#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#5;n#script#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#7;n#script#3;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="65" column="41" selection-start="2172" selection-end="2172" vertical-scroll-proportion="0.6080692">
+            <state line="117" column="21" selection-start="4144" selection-end="4285" vertical-scroll-proportion="0.0">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DT_bootstrap.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/theme/scripts/DataTables/media/css/DT_bootstrap.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="footer.kiwi" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/footer.kiwi">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="63" selection-start="301" selection-end="301" vertical-scroll-proportion="-3.2692308">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="head.kiwi" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/head.kiwi">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="80" selection-start="2116" selection-end="2116" vertical-scroll-proportion="-5.230769">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DT_bootstrap.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/theme/scripts/DataTables/media/js/DT_bootstrap.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -187,22 +151,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/views/forgot-password.kiwi" />
-        <option value="$PROJECT_DIR$/public/js/forgot-password.js" />
-        <option value="$PROJECT_DIR$/model/mailer.js" />
         <option value="$PROJECT_DIR$/views/mail/forgot-password.kiwi" />
         <option value="$PROJECT_DIR$/views/activate.kiwi" />
         <option value="$PROJECT_DIR$/views/login.kiwi" />
-        <option value="$PROJECT_DIR$/public/js/login.js" />
         <option value="$PROJECT_DIR$/public/test/index.html" />
         <option value="$PROJECT_DIR$/model/storage.js" />
-        <option value="$PROJECT_DIR$/app.js" />
-        <option value="$PROJECT_DIR$/routes/index.js" />
-        <option value="$PROJECT_DIR$/lang/ru.json" />
         <option value="$PROJECT_DIR$/views/footer.kiwi" />
         <option value="$PROJECT_DIR$/views/head.kiwi" />
+        <option value="$PROJECT_DIR$/lang/ru.json" />
         <option value="$PROJECT_DIR$/views/index.kiwi" />
         <option value="$PROJECT_DIR$/public/js/index.js" />
+        <option value="$PROJECT_DIR$/public/js/signup.js" />
+        <option value="$PROJECT_DIR$/public/js/login.js" />
+        <option value="$PROJECT_DIR$/public/js/forgot-password.js" />
+        <option value="$PROJECT_DIR$/public/js/activate.js" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
+        <option value="$PROJECT_DIR$/app.js" />
       </list>
     </option>
   </component>
@@ -327,10 +291,6 @@
               <option name="myItemId" value="theme" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -345,18 +305,6 @@
               <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="theme" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DataTables" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -369,122 +317,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="theme" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DataTables" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="media" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pharmacy-concept-store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pharmacy-concept-store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="theme" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DataTables" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="media" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pharmacy-concept-store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pharmacy-concept-store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="theme" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DataTables" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="media" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pharmacy-concept-store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pharmacy-concept-store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="theme" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pharmacy-concept-store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pharmacy-concept-store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -579,7 +415,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -589,7 +425,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3993174" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32764506" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32764506" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -666,77 +502,9 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/node_modules/connect-ensure-login/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.6403508" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/connect-ensure-login/lib/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="13" selection-start="73" selection-end="73" vertical-scroll-proportion="0.18478261" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/login.kiwi">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="22" selection-start="1711" selection-end="1731" vertical-scroll-proportion="0.29962546">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="38" selection-start="1456" selection-end="1456" vertical-scroll-proportion="0.07608695">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/activate.kiwi">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="61" selection-start="1864" selection-end="1925" vertical-scroll-proportion="0.35380116">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/test/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="31" selection-start="788" selection-end="788" vertical-scroll-proportion="0.5964912">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="169" column="64" selection-start="4749" selection-end="4749" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/storage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="47" selection-start="1464" selection-end="1464" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="182" column="73" selection-start="5895" selection-end="5895" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#162#323#0" expanded="false" />
-            <element signature="e#362#435#0" expanded="false" />
-            <element signature="e#475#585#0" expanded="false" />
-            <element signature="e#633#1755#0" expanded="false" />
-            <element signature="e#1797#1966#0" expanded="false" />
-            <element signature="e#2016#3394#0" expanded="false" />
-            <element signature="e#3442#3630#0" expanded="false" />
-            <element signature="e#3686#4636#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lang/ru.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="44" selection-start="5242" selection-end="5242" vertical-scroll-proportion="-11.346154">
           <folding />
         </state>
       </provider>
@@ -771,22 +539,103 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lang/ru.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="93" column="16" selection-start="5281" selection-end="5292" vertical-scroll-proportion="-11.346154">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/storage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="18" selection-start="1066" selection-end="1080" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/signup.kiwi">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="179" column="87" selection-start="8609" selection-end="8696" vertical-scroll-proportion="0.38011697">
+          <folding>
+            <element signature="tag#ul#0;tag#div#0;tag#div#0;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#form#0;tag#div#0;tag#div#0;tag#body#0;tag#html#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/activate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="31" selection-start="975" selection-end="975" vertical-scroll-proportion="0.23097827">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/forgot-password.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="34" selection-start="865" selection-end="1009" vertical-scroll-proportion="0.78532606">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="15" selection-start="864" selection-end="987" vertical-scroll-proportion="0.26086956">
+          <folding>
+            <marker date="1364234886833" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/signup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="17" selection-start="1934" selection-end="2059" vertical-scroll-proportion="0.6647887">
+          <folding>
+            <element signature="e#2874#4967#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/index.kiwi">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="43" selection-start="1020" selection-end="1020" vertical-scroll-proportion="-4.576923">
+        <state line="146" column="27" selection-start="7329" selection-end="7329" vertical-scroll-proportion="-5.4615383">
           <folding>
-            <element signature="n#style#0;n#div#1;n#div#1;n#script#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#form#0;n#script#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#1;n#script#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#3;n#script#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#5;n#script#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#7;n#script#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#script#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="tag#script#3;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="n#style#0;n#div#1;n#div#3;n#script#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#5;n#script#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#7;n#script#3;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="41" selection-start="2172" selection-end="2172" vertical-scroll-proportion="0.6080692">
+        <state line="117" column="21" selection-start="4144" selection-end="4285" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="196" column="19" selection-start="6213" selection-end="6213" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#162#323#0" expanded="false" />
+            <element signature="e#362#435#0" expanded="false" />
+            <element signature="e#475#585#0" expanded="false" />
+            <element signature="e#633#1755#0" expanded="false" />
+            <element signature="e#1797#1966#0" expanded="false" />
+            <element signature="e#2016#3394#0" expanded="false" />
+            <element signature="e#3442#3630#0" expanded="false" />
+            <element signature="e#3686#4636#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="171" column="8" selection-start="4831" selection-end="4831" vertical-scroll-proportion="0.6304348">
           <folding />
         </state>
       </provider>

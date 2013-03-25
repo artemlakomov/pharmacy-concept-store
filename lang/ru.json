@@ -89,5 +89,7 @@
     "HistoryReceiptNo" : "Номер чека",
     "HistoryDescription" : "Описание транзакции",
     "HistoryAmount" : "Сумма, грн.",
-    "HistoryBonusPoints" : "Бонусных баллов"
+    "HistoryBonusPoints" : "Бонусных баллов",
+    "ProfileTitle" : "Профиль",
+    "ProfileSave" : "Сохранить"
 }

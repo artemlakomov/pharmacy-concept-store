@@ -188,3 +188,11 @@ exports.history = function (req, res) {
         }
     });
 };
+
+exports.profile = function (req, res) {
+    res.send(req.user);
+};
+
+exports.profileUpdate = function (req, res) {
+    res.ok('OK','OK');
+};

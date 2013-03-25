@@ -20,28 +20,34 @@ $.validator.setDefaults(
 
 $(function () {
 
-    // validate activation
-    $("#loginForm").ajaxForm(function (data) {
-        $('#modal').find('.btn-primary').click(function () {
-            window.location.href = '/';
-        });
-        if (data.isOK) {
-            window.location.href = '/';
-        } else {
-            $('#modal').find('.close').show();
-            $('#modal').find('button[data-dismiss="modal"]').show();
-            $('#modal').find('.btn-primary').hide();
+    var options = {
+        beforeSubmit: function () {
+            return $('#loginForm').valid();
+        },
+        success: function (data) {
+            $('#modal').find('.btn-primary').click(function () {
+                window.location.href = '/';
+            });
+            if (data.isOK) {
+                window.location.href = '/';
+            } else {
+                $('#modal').find('.close').show();
+                $('#modal').find('button[data-dismiss="modal"]').show();
+                $('#modal').find('.btn-primary').hide();
 
-            $('#modal').find('h3').html(data.title);
-            $('#modal').find('.modal-body').html(data.message);
+                $('#modal').find('h3').html(data.title);
+                $('#modal').find('.modal-body').html(data.message);
 
-            $('#modal').modal('show');
+                $('#modal').modal('show');
+            }
         }
-    });
+    };
+
+    $("#loginForm").ajaxForm(options);
 
     $("#loginForm").validate({
         rules: {
-            username: { required : true, email : true },
+            username: { required: true, email: true },
             password: "required"
         },
         messages: {

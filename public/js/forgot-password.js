@@ -20,29 +20,34 @@ $.validator.setDefaults(
 
 $(function () {
 
-    // validate activation
-    $("#passwordForm").ajaxForm(function (data) {
-        $('#modal').find('.btn-primary').click(function () {
-            window.location.href = '/';
-        });
-        if (data.isOK) {
-            $('#modal').find('.close').hide();
-            $('#modal').find('button[data-dismiss="modal"]').hide();
-            $('#modal').find('.btn-primary').show();
-        } else {
-            $('#modal').find('.close').show();
-            $('#modal').find('button[data-dismiss="modal"]').show();
-            $('#modal').find('.btn-primary').hide();
-        }
-        $('#modal').find('h3').html(data.title);
-        $('#modal').find('.modal-body').html(data.message);
+    var options = {
+        beforeSubmit: function () {
+            return $('#passwordForm').valid();
+        },
+        success: function (data) {
+            $('#modal').find('.btn-primary').click(function () {
+                window.location.href = '/';
+            });
+            if (data.isOK) {
+                $('#modal').find('.close').hide();
+                $('#modal').find('button[data-dismiss="modal"]').hide();
+                $('#modal').find('.btn-primary').show();
+            } else {
+                $('#modal').find('.close').show();
+                $('#modal').find('button[data-dismiss="modal"]').show();
+                $('#modal').find('.btn-primary').hide();
+            }
+            $('#modal').find('h3').html(data.title);
+            $('#modal').find('.modal-body').html(data.message);
 
-        $('#modal').modal('show');
-    });
+            $('#modal').modal('show');
+        }
+    };
+    $("#passwordForm").ajaxForm(options);
 
     $("#passwordForm").validate({
         rules: {
-            email: { required : true, email : true}
+            email: { required: true, email: true}
         },
         messages: {
             email: "Введите корректный адрес электронной почты"

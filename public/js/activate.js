@@ -21,24 +21,30 @@ $.validator.setDefaults(
 $(function () {
 
     // validate activation
-    $("#activateForm").ajaxForm(function (data) {
-        $('#modal').find('.btn-primary').click(function () {
-            window.location.href = '/';
-        });
-        if (data.isOK) {
-            $('#modal').find('.close').hide();
-            $('#modal').find('button[data-dismiss="modal"]').hide();
-            $('#modal').find('.btn-primary').show();
-        } else {
-            $('#modal').find('.close').show();
-            $('#modal').find('button[data-dismiss="modal"]').show();
-            $('#modal').find('.btn-primary').hide();
-        }
-        $('#modal').find('h3').html(data.title);
-        $('#modal').find('.modal-body').html(data.message);
+    var options = {
+        beforeSubmit: function () {
+            return $('#activateForm').valid();
+        },
+        success: function (data) {
+            $('#modal').find('.btn-primary').click(function () {
+                window.location.href = '/';
+            });
+            if (data.isOK) {
+                $('#modal').find('.close').hide();
+                $('#modal').find('button[data-dismiss="modal"]').hide();
+                $('#modal').find('.btn-primary').show();
+            } else {
+                $('#modal').find('.close').show();
+                $('#modal').find('button[data-dismiss="modal"]').show();
+                $('#modal').find('.btn-primary').hide();
+            }
+            $('#modal').find('h3').html(data.title);
+            $('#modal').find('.modal-body').html(data.message);
 
-        $('#modal').modal('show');
-    });
+            $('#modal').modal('show');
+        }
+    };
+    $("#activateForm").ajaxForm(options);
 
     $("#activateForm").validate({
         rules: {
@@ -49,5 +55,5 @@ $(function () {
         }
     });
 
-    if($('input[name=code]').val()) $("#activateForm").submit();
+    if ($('input[name=code]').val()) $("#activateForm").submit();
 });
