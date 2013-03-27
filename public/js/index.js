@@ -27,7 +27,8 @@ $(function(){
         });
 
         this.get('#/change-password', function() {
-            console.log('change-password');
+            app.swap('<!-- ko template : { name : \'password\', afterRender : init } --><!-- /ko -->');
+            ko.applyBindings(new PasswordViewModel(app), document.getElementById('content'));
         });
 
         this.get('#/card-block', function() {
@@ -74,9 +75,14 @@ function ProfileViewModel(app, data){
     var self = this;
     self.app = app;
     data.date = new Date(data.dateOfBirth);
+
     self.data = ko.observable(data)();
 
     self.init = function(){
+
+        $('input[name=contactByEmail]').attr('checked', self.data.contactByEmail);
+        $('input[name=contactBySMS]').attr('checked', self.data.contactBySMS);
+
         var monthNames = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
         var now = new Date();
 
@@ -90,7 +96,7 @@ function ProfileViewModel(app, data){
         for (var i = 1; i <= 12; i++) {
             dobMonth.append('<option value="' + i + '">' + monthNames[i - 1] + '</option>');
         }
-        dobMonth.val(self.data.date.getMonth());
+        dobMonth.val(self.data.date.getMonth() + 1);
 
         var year = now.getFullYear();
         var dobYear = $('select[name=dobYear]');
@@ -204,3 +210,67 @@ $.validator.setDefaults(
             });
         }
     });
+
+function PasswordViewModel(app){
+    var self = this;
+    self.app = app;
+    self.data = ko.observable({
+        current: '',
+        new: '',
+        confirm: ''
+    });
+
+    self.init = function(){
+        var options = {
+            beforeSubmit:  function(){
+                return $('#passwordForm').valid();
+            },
+            success: function (data) {
+                $('#modal').find('.btn-primary').click(function () {
+                    self.app.setLocation('/');
+                    $('#modal').modal('hide');
+                });
+                if (data.isOK) {
+                    $('#modal').find('.close').hide();
+                    $('#modal').find('button[data-dismiss="modal"]').hide();
+                    $('#modal').find('.btn-primary').show();
+                } else {
+                    $('#modal').find('.close').show();
+                    $('#modal').find('button[data-dismiss="modal"]').show();
+                    $('#modal').find('.btn-primary').hide();
+                }
+
+                $('#modal').find('h3').html(data.title);
+                $('#modal').find('.modal-body').html(data.message);
+
+                $('#modal').modal('show');
+            }
+        };
+        $("#passwordForm").ajaxForm(options);
+
+        $("#passwordForm").validate({
+            rules: {
+                current: "required",
+                new: {
+                    required: true,
+                    minlength: 3
+                },
+                confirm: {
+                    required: true,
+                    equalTo: "#new"
+                }
+            },
+            messages: {
+                current: "Введите текущий пароль",
+                new: {
+                    required: "Введите новый пароль",
+                    minlength: "Пароль должен быть длиннее 3 символов"
+                },
+                confirm: {
+                    required: "Введите подтверждение пароля",
+                    equalTo: "Пароли должны совпадать"
+                }
+            }
+        });
+    };
+}

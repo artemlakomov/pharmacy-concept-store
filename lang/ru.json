@@ -91,5 +91,16 @@
     "HistoryAmount" : "Сумма, грн.",
     "HistoryBonusPoints" : "Бонусных баллов",
     "ProfileTitle" : "Профиль",
-    "ProfileSave" : "Сохранить"
+    "ProfileSave" : "Сохранить",
+    "ProfileUpdateSuccess" : "Профиль успешно сохранен",
+    "CommonSuccess" : "Операция успешно завершена",
+    "PasswordTitle" : "Изменить пароль",
+    "PasswordCurrent" : "Текущий пароль",
+    "PasswordNew" : "Новый пароль",
+    "PasswordConfirm" : "Подтверждение пароля",
+    "PasswordSuccess" : "Пароль успешно изменен",
+    "PasswordChange" : "Изменить",
+    "PasswordError" : "Не удалось изменить пароль",
+    "PasswordWrongCurrent" : "<p>Неправильный текущий пароль. Внимательно проверьте ввод.</p>",
+    "PasswordWrongNew" : "<p>Пустой новый пароль или несовпадение паролей. Внимательно проверьте ввод.</p>"
 }

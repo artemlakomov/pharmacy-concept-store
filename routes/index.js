@@ -27,6 +27,9 @@ exports.signupComplete = function (req, res) {
     var storage = require('../model/storage');
     var tc = new storage.Customer(req.body);
 
+    if (!tc.contactByEmail) tc.contactByEmail = false;
+    if (!tc.contactBySMS) tc.contactBySMS = false;
+
     storage.Customer.findOne({
         $or: [
             { cardNumber: tc.cardNumber.toLowerCase() },
@@ -46,8 +49,8 @@ exports.signupComplete = function (req, res) {
             if (err) {
                 res.err(res.__('SignupErrorTitle'), err.toString());
             } else {
-                mailer.sendActivationEmail(tc, req, res, function(err, response){
-                    if(err){
+                mailer.sendActivationEmail(tc, req, res, function (err, response) {
+                    if (err) {
                         res.err(res.__('SignupErrorTitle'), err.toString());
                     } else {
                         res.ok(res.__('SignupSuccessTitle'), res.__('SignupSuccessBody'));
@@ -61,7 +64,7 @@ exports.signupComplete = function (req, res) {
 exports.activate = function (req, res) {
     res.render('activate', {
         title: res.__('ActivateTitle') + ' - ' + res.__('ActivateSubtitle'),
-        code : req.query.code ? req.query.code : ''
+        code: req.query.code ? req.query.code : ''
     });
 };
 
@@ -83,25 +86,25 @@ exports.activateComplete = function (req, res) {
             } else {
                 res.ok(res.__('ActivateSuccessTitle'), res.__('ActivateSuccessBody'));
                 try {
-                   storage.addCustomerTransaction(
-                       cust.cardNumber,
-                       '',
-                       res.__('ActivateWelcomeBonus'),
-                       0,
-                       config.welcomePointsBonus,
-                       new Date(),
-                       function(err){
-                          if(err) console.error(err);
-                          else{
-                              mailer.sendWelcomeBonusEmail(cust, req, res, function(err){
-                                  if(err) console.error(err);
-                              });
-                          }
-                       }
-                   );
+                    storage.addCustomerTransaction(
+                        cust.cardNumber,
+                        '',
+                        res.__('ActivateWelcomeBonus'),
+                        0,
+                        config.welcomePointsBonus,
+                        new Date(),
+                        function (err) {
+                            if (err) console.error(err);
+                            else {
+                                mailer.sendWelcomeBonusEmail(cust, req, res, function (err) {
+                                    if (err) console.error(err);
+                                });
+                            }
+                        }
+                    );
                 }
-                catch(e){
-                   console.error(e);
+                catch (e) {
+                    console.error(e);
                 }
             }
         });
@@ -111,7 +114,7 @@ exports.activateComplete = function (req, res) {
 exports.forgotPassword = function (req, res) {
     res.render('forgot-password', {
         title: res.__('ForgotPasswordTitle') + ' - ' + res.__('ForgotPasswordSubtitle'),
-        code : req.query.code ? req.query.code : ''
+        code: req.query.code ? req.query.code : ''
     });
 };
 
@@ -130,8 +133,8 @@ exports.forgotPasswordComplete = function (req, res) {
             if (err) {
                 res.err(res.__('ForgotPasswordErrorTitle'), err.toString());
             } else {
-                mailer.sendPasswordEmail(cust, req, res, function(err, response){
-                    if(err){
+                mailer.sendPasswordEmail(cust, req, res, function (err, response) {
+                    if (err) {
                         res.err(res.__('ForgotPasswordErrorTitle'), err.toString());
                     } else {
                         res.ok(res.__('ForgotPasswordSuccessTitle'), res.__('ForgotPasswordSuccessBody'));
@@ -144,8 +147,8 @@ exports.forgotPasswordComplete = function (req, res) {
 }
 
 /************** API routes **********************/
-exports.transaction = function(req, res){
-    if(config.ip.indexOf(req.ip) == -1){
+exports.transaction = function (req, res) {
+    if (config.ip.indexOf(req.ip) == -1) {
         res.send(403, 'Forbidden');
         return;
     }
@@ -164,14 +167,14 @@ exports.transaction = function(req, res){
 /************** User account routes *********************/
 exports.bonus = function (req, res) {
     var storage = require('../model/storage');
-    storage.Transaction.find({ cardNumber: req.user.cardNumber }, function(err, data){
+    storage.Transaction.find({ cardNumber: req.user.cardNumber }, function (err, data) {
         if (err) {
             res.err(res.__('ApiErrorTitle'), err.toString());
         } else {
-            var result = { earned : 0, spent : 0 };
-            data.forEach(function(item){
-               if(item.points > 0) result.earned += item.points;
-               if(item.points < 0) result.spent += Math.abs(item.points);
+            var result = { earned: 0, spent: 0 };
+            data.forEach(function (item) {
+                if (item.points > 0) result.earned += item.points;
+                if (item.points < 0) result.spent += Math.abs(item.points);
             });
             res.send(result);
         }
@@ -180,7 +183,7 @@ exports.bonus = function (req, res) {
 
 exports.history = function (req, res) {
     var storage = require('../model/storage');
-    storage.Transaction.find({ cardNumber: req.user.cardNumber }).sort('-date').execFind(function(err, data){
+    storage.Transaction.find({ cardNumber: req.user.cardNumber }).sort('-date').execFind(function (err, data) {
         if (err) {
             res.err(res.__('ApiErrorTitle'), err.toString());
         } else {
@@ -194,5 +197,57 @@ exports.profile = function (req, res) {
 };
 
 exports.profileUpdate = function (req, res) {
-    res.ok('OK','OK');
+
+    req.user.PIN = req.body.PIN;
+    req.user.firstName = req.body.firstName;
+    req.user.lastName = req.body.lastName;
+    req.user.gender = req.body.gender;
+    req.user.dateOfBirth = req.body.dateOfBirth;
+    console.log(req.user.dateOfBirth);
+    req.user.city = req.body.city;
+    req.user.address = req.body.address;
+    req.user.phone = req.body.phone;
+    req.user.activity = req.body.activity;
+    req.user.secretQuestion = req.body.secretQuestion;
+    req.user.secretAnswer = req.body.secretAnswer;
+    req.user.contactByEmail = req.body.contactByEmail ? req.body.contactByEmail : false;
+    req.user.contactBySMS = req.body.contactBySMS ? req.body.contactBySMS : false;
+
+    req.user.save(function (err) {
+        if (err) {
+            res.err(res.__('ApiErrorTitle'), err.toString());
+        } else {
+            res.ok(res.__('CommonSuccess'), res.__('ProfileUpdateSuccess'));
+        }
+    });
+
 };
+
+exports.profileUpdate = function (req, res) {
+    if (req.user.password != req.body.current) {
+        res.err(res.__('PasswordError'), res.__('PasswordWrongCurrent'));
+        return;
+    }
+
+    if (!req.body.new || req.body.new != req.body.confirm) {
+        res.err(res.__('PasswordError'), res.__('PasswordWrongNew'));
+        return;
+    }
+
+    req.user.password = req.body.new;
+
+    req.user.save(function (err) {
+        if (err) {
+            res.err(res.__('ApiErrorTitle'), err.toString());
+        } else {
+            mailer.sendPasswordEmail(req.user, req, res, function (err, response) {
+                if (err) {
+                    res.err(res.__('PasswordError'), err.toString());
+                } else {
+                    res.ok(res.__('PasswordSuccess'), res.__('ForgotPasswordSuccessBody'));
+                }
+            });
+        }
+    });
+
+}
