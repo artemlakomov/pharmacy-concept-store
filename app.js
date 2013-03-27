@@ -171,6 +171,8 @@ app.get('/history', login.ensureLoggedIn("/login"), routes.history);
 app.get('/profile', login.ensureLoggedIn("/login"), routes.profile);
 app.post('/profile-update', login.ensureLoggedIn("/login"), routes.profileUpdate);
 app.post('/password-change', login.ensureLoggedIn("/login"), routes.profileUpdate);
+app.post('/block-card', login.ensureLoggedIn("/login"), routes.blockCard);
+app.post('/replace-card', login.ensureLoggedIn("/login"), routes.replaceCard);
 
 http.createServer(app).listen(app.get('port'), function () {
     console.log("Express server listening on port " + app.get('port'));

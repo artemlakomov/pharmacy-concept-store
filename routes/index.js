@@ -249,5 +249,24 @@ exports.profileUpdate = function (req, res) {
             });
         }
     });
-
 }
+
+exports.blockCard = function (req, res) {
+    mailer.sendBlockCardEmail(req.user, req, res, function(err, response){
+        if (err) {
+            res.err(res.__('ApiErrorTitle'), err.toString());
+        } else {
+            res.ok(res.__('BlockCardSuccess'), res.__('BlockCardSuccessBody'));
+        }
+    });
+};
+
+exports.replaceCard = function (req, res) {
+    mailer.sendReplaceCardEmail(req.user, req, res, function(err, response){
+        if (err) {
+            res.err(res.__('ApiErrorTitle'), err.toString());
+        } else {
+            res.ok(res.__('ReplaceCardSuccess'), res.__('ReplaceCardSuccessBody'));
+        }
+    });
+};

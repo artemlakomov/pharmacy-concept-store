@@ -32,11 +32,13 @@ $(function(){
         });
 
         this.get('#/card-block', function() {
-            console.log('block card');
+            app.swap('<!-- ko template : { name : \'block-card\', afterRender : init } --><!-- /ko -->');
+            ko.applyBindings(new BlockCardViewModel(app), document.getElementById('content'));
         });
 
         this.get('#/card-replace', function() {
-            console.log('replace card');
+            app.swap('<!-- ko template : { name : \'replace-card\', afterRender : init } --><!-- /ko -->');
+            ko.applyBindings(new ReplaceCardViewModel(app), document.getElementById('content'));
         });
     });
 
@@ -271,6 +273,75 @@ function PasswordViewModel(app){
                     equalTo: "Пароли должны совпадать"
                 }
             }
+        });
+    };
+}
+
+function BlockCardViewModel(app){
+    var self = this;
+    self.app = app;
+
+    self.init = function(){
+         $('#button-block-card').click(function(){
+             $.post('/block-card', function(data){
+                 $('#modal').find('.btn-primary').click(function () {
+                     self.app.setLocation('/');
+                     $('#modal').modal('hide');
+                 });
+                 if (data.isOK) {
+                     $('#modal').find('.close').hide();
+                     $('#modal').find('button[data-dismiss="modal"]').hide();
+                     $('#modal').find('.btn-primary').show();
+                 } else {
+                     $('#modal').find('.close').show();
+                     $('#modal').find('button[data-dismiss="modal"]').show();
+                     $('#modal').find('.btn-primary').hide();
+                 }
+
+                 $('#modal').find('h3').html(data.title);
+                 $('#modal').find('.modal-body').html(data.message);
+
+                 $('#modal').modal('show');
+             });
+         });
+
+        $('#button-block-cancel').click(function(){
+            self.app.setLocation('/')
+        });
+    };
+}
+
+
+function ReplaceCardViewModel(app){
+    var self = this;
+    self.app = app;
+
+    self.init = function(){
+        $('#button-replace-card').click(function(){
+            $.post('/replace-card', function(data){
+                $('#modal').find('.btn-primary').click(function () {
+                    self.app.setLocation('/');
+                    $('#modal').modal('hide');
+                });
+                if (data.isOK) {
+                    $('#modal').find('.close').hide();
+                    $('#modal').find('button[data-dismiss="modal"]').hide();
+                    $('#modal').find('.btn-primary').show();
+                } else {
+                    $('#modal').find('.close').show();
+                    $('#modal').find('button[data-dismiss="modal"]').show();
+                    $('#modal').find('.btn-primary').hide();
+                }
+
+                $('#modal').find('h3').html(data.title);
+                $('#modal').find('.modal-body').html(data.message);
+
+                $('#modal').modal('show');
+            });
+        });
+
+        $('#button-replace-cancel').click(function(){
+            self.app.setLocation('/')
         });
     };
 }

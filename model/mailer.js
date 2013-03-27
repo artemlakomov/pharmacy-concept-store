@@ -18,8 +18,6 @@ exports.sendActivationEmail = function (customer, req, res, next) {
             html: rendered.toString()
         }
 
-        console.log(mailOptions);
-
         smtpTransport.sendMail(mailOptions, function (err, response) {
             if (err)console.log(err);
             smtpTransport.close();
@@ -42,8 +40,6 @@ exports.sendWelcomeBonusEmail = function (customer, req, res, next) {
                 text: "Please refer to HTML version of this email",
                 html: rendered.toString()
             }
-
-            console.log(mailOptions);
 
             smtpTransport.sendMail(mailOptions, function (err, response) {
                 if (err)console.log(err);
@@ -68,7 +64,28 @@ exports.sendPasswordEmail = function (customer, req, res, next) {
                 html: rendered.toString()
             }
 
-            console.log(mailOptions);
+            smtpTransport.sendMail(mailOptions, function (err, response) {
+                if (err)console.log(err);
+                smtpTransport.close();
+                if (next)next(err, response);
+            });
+        });
+}
+
+exports.sendBlockCardEmail = function (customer, req, res, next) {
+    var template = new kiwi.Template().loadAndRender('./views/mail/block-card-request.kiwi',
+        { customer : customer, baseUrl : req.baseUrl},
+        function onRendered(err, rendered) {
+
+            var smtpTransport = nodemailer.createTransport("SMTP", config.smtp);
+
+            var mailOptions = {
+                from: config.from,
+                to: config.managerEmail,
+                subject: res.__('BlockCardSubject'),
+                text: "Please refer to HTML version of this email",
+                html: rendered.toString()
+            }
 
             smtpTransport.sendMail(mailOptions, function (err, response) {
                 if (err)console.log(err);
@@ -77,3 +94,27 @@ exports.sendPasswordEmail = function (customer, req, res, next) {
             });
         });
 }
+
+exports.sendReplaceCardEmail = function (customer, req, res, next) {
+    var template = new kiwi.Template().loadAndRender('./views/mail/replace-card-request.kiwi',
+        { customer : customer, baseUrl : req.baseUrl},
+        function onRendered(err, rendered) {
+
+            var smtpTransport = nodemailer.createTransport("SMTP", config.smtp);
+
+            var mailOptions = {
+                from: config.from,
+                to: config.managerEmail,
+                subject: res.__('ReplaceCardSubject'),
+                text: "Please refer to HTML version of this email",
+                html: rendered.toString()
+            }
+
+            smtpTransport.sendMail(mailOptions, function (err, response) {
+                if (err)console.log(err);
+                smtpTransport.close();
+                if (next)next(err, response);
+            });
+        });
+}
+

@@ -10,7 +10,8 @@ exports.init = function () {
             }
         },
         ip: ['127.0.0.1'],
-        welcomePointsBonus : 20
+        welcomePointsBonus : 20,
+        managerEmail : 'manager@integritum.eu'
     };
 };
 

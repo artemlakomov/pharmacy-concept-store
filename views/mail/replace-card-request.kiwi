@@ -1,0 +1,31 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<p>
+    Уважаемый администратор,
+</p>
+
+<p>
+    От пользователя ${customer.firstName} ${customer.lastName} поступил запрос блокировку и перевыпуск бонусной карты в связи с утерей или кражей.
+</p>
+
+<p>
+    Данные пользователя:
+<ul>
+    <li>Имя: ${customer.firstName} ${customer.lastName}</li>
+    <li>Номер карты: ${customer.cardNumber}</li>
+    <li>телефон: ${customer.phone}</li>
+    <li>email: ${customer.email}</li>
+    <li>адрес: ${customer.city}, ${customer.address}</li>
+</ul>
+</p>
+<p>
+    С уважением,<br/>
+    система поддержки программы лояльности<br/>
+    Pharmacy CONCEPT STORE!
+</p>
+
+</body>
+</html>
