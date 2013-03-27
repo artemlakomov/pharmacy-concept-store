@@ -9,11 +9,12 @@ exports.init = function () {
                 pass: "21SbLD#81"
             }
         },
-        ip: ['127.0.0.1'],
+        ip: ['127.0.0.1','77.91.167.57'],
         welcomePointsBonus : 20,
         managerEmail : 'manager@integritum.eu',
-        public: 'http://pharm-concept.com.ua'
-
+        public: 'http://pharm-concept.com.ua',
+        //mongo: 'mongodb://localhost/test'
+        mongo: 'mongodb://nodejitsu:d12c4399bdd812032f140c64fb844a90@linus.mongohq.com:10016/nodejitsudb5664132360'
     };
 };
 

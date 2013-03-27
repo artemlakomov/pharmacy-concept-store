@@ -104,9 +104,8 @@ app.configure(function () {
             });
         };
 
-        var port = app.get('port');
-        req.baseUrl = req.protocol + '://' + req.host;
-        if (port != '80') req.baseUrl += ':' + port;
+        req.baseUrl = req.protocol + '://' + req.headers.host;
+        console.log(req.baseUrl);
 
         next();
     });
