@@ -10,9 +10,8 @@
 {{include "head"}}
 <body>
 <!-- Start Content -->
-<div class="container-fluid fixed top-menu">
-
-
+{{include "top"}}
+<div id="content-wrap" class="container-fluid fixed top-menu">
     <div id="content">
 
         <ul class="breadcrumb">

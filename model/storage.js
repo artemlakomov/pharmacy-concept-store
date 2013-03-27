@@ -38,7 +38,7 @@ exports.Customer = mongoose.model('Customer', customerSchema);
 
 /************** Transaction **********************/
 var transactionSchema = mongoose.Schema({
-    cardNumber: { type: String, unique : false, required: true },
+    cardNumber: { type: String, unique: false, required: true },
     description: { type: String, required: true },
     receiptNumber: { type: String, required: false },
     salesPoint: { type: String, required: false },
@@ -61,4 +61,18 @@ exports.addCustomerTransaction = function (cardNumber, receiptNumber, descriptio
     t.save(function (err) {
         if (next)next(err);
     });
+}
+
+exports.calculatePointsBalance = function (cardNumber, next) {
+    exports.Transaction.aggregate(
+        { $match : { cardNumber : cardNumber } },
+        { $group: {
+            _id: null,
+            balance: { $sum: '$points' }
+        }
+        }
+        , function (err, result) {
+            if(err) next(err, 0);
+            else next(null, result.length > 0 ? result[0].balance : 0);
+        });
 }

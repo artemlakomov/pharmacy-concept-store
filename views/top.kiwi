@@ -1,0 +1,23 @@
+<div id="top" class="container-fluid fixed top-menu">
+    <div class="row banner">
+        <div class="span4">
+            <a href="/">
+                <img src="theme/images/brand/logo.png">
+            </a>
+        </div>
+        <div class="span8">
+            ${__('TopText')|raw}
+        </div>
+    </div>
+    <div class="navbar">
+        <div class="navbar-inner">
+            <ul class="nav">
+                <li><a href="${config.public}/">${__('MenuHome')}</a></li>
+                <li><a href="${config.public}/pro-nas/">${__('MenuAboutUs')}</a></li>
+                <li><a href="${config.public}/apteka/">${__('MenuPharmacy')}</a></li>
+                <li><a href="${config.public}/poslugy/">${__('MenuServices')}</a></li>
+                <li><a href="${config.public}/kontakty.html">${__('MenuContacts')}</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
