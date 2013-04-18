@@ -1,49 +1,49 @@
 $(function(){
     var app = Sammy('#content', function() {
         this.get('/', function() {
-           app.swap('<!-- ko template : { name : \'dashboard\' } --><!-- /ko -->');
+           app.swap('<div data-bind="template : { name : \'dashboard\' }"></div>');
            ko.applyBindings({}, document.getElementById('content'));
         });
 
         this.get('#/bonus', function() {
             this.load('/bonus', { json : true }).then(function(data){
-                app.swap('<!-- ko template : { name : \'bonus\' } --><!-- /ko -->');
+                app.swap('<div data-bind="template : { name : \'bonus\' }"></div>');
                 ko.applyBindings(new BonusViewModel(app, data), document.getElementById('content'));
             });
         });
 
         this.get('#/history', function() {
             this.load('/history', { json : true }).then(function(data){
-                app.swap('<!-- ko template : { name : \'history\', afterRender : init } --><!-- /ko -->');
+                app.swap('<div data-bind="template : { name : \'history\', afterRender : init }"></div>');
                 ko.applyBindings(new HistoryViewModel(app, data), document.getElementById('content'));
             });
         });
 
         this.get('#/profile', function() {
             this.load('/profile', { json : true }).then(function(data){
-                app.swap('<!-- ko template : { name : \'profile\', afterRender : init } --><!-- /ko -->');
+                app.swap('<div data-bind="template : { name : \'profile\', afterRender : init }"></div>');
                 ko.applyBindings(new ProfileViewModel(app, data), document.getElementById('content'));
             });
         });
 
         this.get('#/change-password', function() {
-            app.swap('<!-- ko template : { name : \'password\', afterRender : init } --><!-- /ko -->');
+            app.swap('<div data-bind="template : { name : \'password\', afterRender : init }"></div>');
             ko.applyBindings(new PasswordViewModel(app), document.getElementById('content'));
         });
 
         this.get('#/card-block', function() {
-            app.swap('<!-- ko template : { name : \'block-card\', afterRender : init } --><!-- /ko -->');
+            app.swap('<div data-bind="template : { name : \'block-card\', afterRender : init }"></div>');
             ko.applyBindings(new BlockCardViewModel(app), document.getElementById('content'));
         });
 
         this.get('#/card-replace', function() {
-            app.swap('<!-- ko template : { name : \'replace-card\', afterRender : init } --><!-- /ko -->');
+            app.swap('<div data-bind="template : { name : \'replace-card\', afterRender : init }"></div>');
             ko.applyBindings(new ReplaceCardViewModel(app), document.getElementById('content'));
         });
     });
 
     // start the application
-    app.run('/');
+    app.run('#/');
 
     ko.bindingHandlers.dateString = {
         update: function(element, valueAccessor, allBindingsAccessor, viewModel) {
@@ -218,7 +218,7 @@ function PasswordViewModel(app){
     self.app = app;
     self.data = ko.observable({
         current: '',
-        new: '',
+        nevv: '',
         confirm: ''
     });
 
@@ -253,7 +253,7 @@ function PasswordViewModel(app){
         $("#passwordForm").validate({
             rules: {
                 current: "required",
-                new: {
+                nevv: {
                     required: true,
                     minlength: 3
                 },
@@ -264,7 +264,7 @@ function PasswordViewModel(app){
             },
             messages: {
                 current: "Введите текущий пароль",
-                new: {
+                nevv: {
                     required: "Введите новый пароль",
                     minlength: "Пароль должен быть длиннее 3 символов"
                 },

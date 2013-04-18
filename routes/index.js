@@ -4,7 +4,8 @@ var config = require('../model/config').init();
 var storage = require('../model/storage');
 
 exports.index = function (req, res) {
-    storage.calculatePointsBalance(req.user.cardNumber, function(err, points){
+    console.log('index');
+    storage.calculatePointsBalance(req.user.cardNumber, function (err, points) {
         res.render('index', {
             title: res.__('DashboardTitle') + ' - ' + res.__('DashboardSubtitle'),
             points: points,
@@ -20,10 +21,26 @@ exports.login = function (req, res) {
     });
 };
 
+exports.verifyCard = function (req, res) {
+    storage.verifyCard(req.body.cardNumber, req.body.phone, res.__, function (err) {
+        if (err) {
+            res.err(res.__('LoginSignupCardVerificationError'), err.toString());
+        } else {
+            res.ok('OK');
+        }
+    });
+};
+
 exports.signup = function (req, res) {
-    res.render('signup', {
-        title: res.__('SignupTitle') + ' - ' + res.__('SignupSubtitle'),
-        config: config
+    storage.verifyCard(req.query.cardNumber, req.query.phone, res.__, function (err, cust) {
+        var error = err;
+        var customer = cust;
+        res.render('signup', {
+            title: res.__('SignupTitle') + ' - ' + res.__('SignupSubtitle'),
+            config: config,
+            error: error,
+            customer: customer
+        });
     });
 };
 
@@ -201,7 +218,6 @@ exports.profileUpdate = function (req, res) {
     req.user.lastName = req.body.lastName;
     req.user.gender = req.body.gender;
     req.user.dateOfBirth = req.body.dateOfBirth;
-    console.log(req.user.dateOfBirth);
     req.user.city = req.body.city;
     req.user.address = req.body.address;
     req.user.phone = req.body.phone;
@@ -221,7 +237,7 @@ exports.profileUpdate = function (req, res) {
 
 };
 
-exports.profileUpdate = function (req, res) {
+exports.passwordChange = function (req, res) {
     if (req.user.password != req.body.current) {
         res.err(res.__('PasswordError'), res.__('PasswordWrongCurrent'));
         return;
@@ -250,7 +266,7 @@ exports.profileUpdate = function (req, res) {
 }
 
 exports.blockCard = function (req, res) {
-    mailer.sendBlockCardEmail(req.user, req, res, function(err, response){
+    mailer.sendBlockCardEmail(req.user, req, res, function (err, response) {
         if (err) {
             res.err(res.__('ApiErrorTitle'), err.toString());
         } else {
@@ -260,11 +276,35 @@ exports.blockCard = function (req, res) {
 };
 
 exports.replaceCard = function (req, res) {
-    mailer.sendReplaceCardEmail(req.user, req, res, function(err, response){
+    mailer.sendReplaceCardEmail(req.user, req, res, function (err, response) {
         if (err) {
             res.err(res.__('ApiErrorTitle'), err.toString());
         } else {
             res.ok(res.__('ReplaceCardSuccess'), res.__('ReplaceCardSuccessBody'));
         }
+    });
+};
+
+exports.content = function (req, res) {
+
+    var pg = req.query.page;
+    var doc = null;
+    if(pg == 'terms'){
+        doc = 'ContentTerms';
+    }
+
+    if(!doc){
+        res.status(404).send("Not found");
+        return;
+    }
+
+    fs = require('fs')
+    fs.readFile(res.__(doc + 'Body'), 'utf8', function (err,data) {
+        if(err) console.error(err);
+        res.render('content', {
+            title: res.__(doc + 'Title'),
+            body: data,
+            config: config
+        });
     });
 };

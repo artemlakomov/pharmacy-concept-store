@@ -24,15 +24,17 @@
         <h3 class="glyphicons show_thumbnails_with_lines"><i></i> ${__('SignupTitle')}</h3>
 
         <form class="form-horizontal" style="margin-bottom: 0;" id="signupForm" method="post" autocomplete="off">
-            <input type="hidden" name="dateOfBirth" value="" />
+            <input type="hidden" name="dateOfBirth" value=""/>
             <h4>${__('SignupSubtitle')}</h4>
             <hr class="separator line"/>
+
+            {{if !error}}
             <div class="row-fluid">
                 <div class="span6">
                     <div class="control-group">
                         <label class="control-label" for="cardNumber">${__('SignupCardNumber')}</label>
 
-                        <div class="controls"><input class="span12" id="cardNumber" name="cardNumber" type="text"/>
+                        <div class="controls"><input class="span12" id="cardNumber" name="cardNumber" type="text" value="${customer.cardNumber}" maxlength="13"/>
                         </div>
                     </div>
                     <div class="control-group">
@@ -42,12 +44,6 @@
                     </div>
                 </div>
                 <div class="span6">
-                    <div class="control-group">
-                        <label class="control-label" for="PIN">${__('SignupPIN')}</label>
-
-                        <div class="controls"><input class="span12" id="PIN" name="PIN" type="password"/>
-                        </div>
-                    </div>
                     <div class="control-group">
                         <label class="control-label" for="password">${__('SignupPassword')}</label>
 
@@ -94,6 +90,7 @@
                     </div>
                     <div class="control-group">
                         <label class="control-label">${__('SignupDateOfBirth')}</label>
+
                         <div class="controls">
                             <select class="span3" name="dobDay">
                                 <option value="">${__('CommonPleaseSelect')}</option>
@@ -108,30 +105,37 @@
                     </div>
                     <div class="control-group">
                         <label class="control-label" for="city">${__('SignupCity')}</label>
+
                         <div class="controls"><input class="span12" id="city" name="city" type="text"/></div>
                     </div>
                     <div class="control-group">
                         <label class="control-label" for="address">${__('SignupAddress')}</label>
+
                         <div class="controls"><input class="span12" id="address" name="address" type="text"/></div>
                     </div>
                     <div class="control-group">
                         <label class="control-label" for="phone">${__('SignupPhone')}</label>
-                        <div class="controls"><input class="span12" id="phone" name="phone" type="text"/></div>
+
+                        <div class="controls"><input class="span12" value="${customer.phone}" id="phone" name="phone" type="text"/></div>
                     </div>
                 </div>
                 <div class="span6">
                     <div class="control-group">
                         <label class="control-label" for="activity">${__('SignupActivity')}</label>
+
                         <div class="controls"><input class="span12" id="activity" name="activity" type="text"/>
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label" for="secretQuestion">${__('SignupSecretQuestion')}</label>
-                        <div class="controls"><input class="span12" id="secretQuestion" name="secretQuestion" type="text"/>
+
+                        <div class="controls"><input class="span12" id="secretQuestion" name="secretQuestion"
+                                                     type="text"/>
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label" for="secretAnswer">${__('SignupSecretAnswer')}</label>
+
                         <div class="controls"><input class="span12" id="secretAnswer" name="secretAnswer" type="text"/>
                         </div>
                     </div>
@@ -144,12 +148,13 @@
                     <h4 style="margin-bottom: 10px;">${__('SignupPolicy')}</h4>
                     <label class="checkbox" for="agree">
                         <input type="checkbox" class="checkbox" id="agree" name="agree"/>
-                        ${__('SignupAgreeToPolicy')}
+                        ${__('SignupAgreeToPolicy')|raw}
                     </label>
                 </div>
                 <div class="span8">
                     <div id="newsletter_topics">
                         <h4>${__('SignupNewsletters')}</h4>
+
                         <p>${__('SignupNewslettersOptions')}</p>
                         <label for="contactByEmail">
                             <input type="checkbox" id="contactByEmail" value="true" name="contactByEmail"/>
@@ -166,8 +171,16 @@
             <div class="separator"></div>
 
             <div class="form-actions">
-                <button type="submit" class="btn btn-icon btn-primary glyphicons circle_ok"><i></i>${__('SignupRegister')}</button>
+                <button type="submit" class="btn btn-icon btn-primary glyphicons circle_ok"><i></i>${__('SignupRegister')}
+                </button>
             </div>
+            {{else}}
+            <div class="row-fluid">
+                <div class="span12">
+                    <p class="error help-block"><span class="label label-important">${error}</span></p>
+                </div>
+            </div>
+            {{/if}}
 
         </form>
 
@@ -188,7 +201,8 @@
     <div class="modal-body">
     </div>
     <div class="modal-footer">
-        <button class="btn btn-block btn-icon glyphicons circle_exclamation_mark" data-dismiss="modal"><i></i> Закрыть</button>
+        <button class="btn btn-block btn-icon glyphicons circle_exclamation_mark" data-dismiss="modal"><i></i> Закрыть
+        </button>
         <button class="btn btn-block btn-primary btn-icon glyphicons ok"><i></i> Продолжить</button>
     </div>
 </div>

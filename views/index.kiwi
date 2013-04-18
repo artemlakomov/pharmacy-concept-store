@@ -97,7 +97,7 @@
                 <div class="control-group">
                     <label class="control-label" for="new">${__('PasswordNew')}</label>
 
-                    <div class="controls"><input data-bind="value: data.new" class="span12" id="new" name="new"
+                    <div class="controls"><input data-bind="value: data.nevv" class="span12" id="new" name="new"
                                                  type="password"/>
                     </div>
                 </div>
@@ -130,7 +130,7 @@
 
     <h3 class="glyphicons show_thumbnails_with_lines"><i></i> ${__('ProfileTitle')}</h3>
 
-    <form class="form-horizontal" style="margin-bottom: 0;" id="profileForm" action="/profile-update" method="post"
+    <form class="form-horizontal" style="margin-bottom: 0;" id="profileForm" action="/profile" method="post"
           autocomplete="off">
         <input type="hidden" name="dateOfBirth" data-bind="value : data.dateOfBirth"/>
 
@@ -259,12 +259,12 @@
 
                     <p>${__('SignupNewslettersOptions')}</p>
                     <label for="contactByEmail">
-                        <input data-bind="checked : contactByEmail" type="checkbox" id="contactByEmail" value="true"
+                        <input data-bind="checked : data.contactByEmail" type="checkbox" id="contactByEmail" value="true"
                                name="contactByEmail"/>
                         ${__('SignupNewsletterEmail')}
                     </label>
                     <label for="contactBySMS">
-                        <input data-bind="checked : contactBySMS" type="checkbox" id="contactBySMS" value="true"
+                        <input data-bind="checked : data.contactBySMS" type="checkbox" id="contactBySMS" value="true"
                                name="contactBySMS"/>
                         ${__('SignupNewsletterSMS')}
                     </label>

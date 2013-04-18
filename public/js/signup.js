@@ -73,15 +73,14 @@ $(function () {
 
     $("#signupForm").validate({
         rules: {
-            cardNumber: "required",
+            cardNumber: {
+                required: true,
+                minlength: 13,
+                maxlength: 13
+            },
             email: {
                 required: true,
                 email: true
-            },
-            PIN: {
-                required: true,
-                number: true,
-                maxlength: 4
             },
             password: {
                 required: true,
@@ -95,7 +94,12 @@ $(function () {
             lastName: "required",
             city: "required",
             address: "required",
-            phone: "required",
+            phone: {
+                required : true,
+                number : true,
+                minlength: 10,
+                maxlength: 10
+            },
             activity: "required",
             secretQuestion: "required",
             secretAnswer: "required",
@@ -128,7 +132,7 @@ $(function () {
             },
             city: "Введите название города",
             address: "Введите адрес",
-            phone: "Введите номер телефона",
+            phone: "Введите 10 цифр телефонного номера, например ",
             activity: "Введите отрасль",
             secretQuestion: "Придумайте секретный вопрос",
             secretAnswer: "Введите ответ на секретный вопрос",

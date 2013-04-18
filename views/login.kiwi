@@ -10,8 +10,8 @@
 {{include "head"}}
 <body class="login">
 <style>
-    .signup{
-        width : 300px;
+    .signup {
+        width: 300px;
         margin-top: 15px;
     }
 </style>
@@ -21,15 +21,18 @@
         <div id="login">
             <form class="form-signin" id="loginForm" method="post">
                 <label class="strong">${ __('LoginEmail')}</label>
-                <input type="text" id="username"  name="username" class="input-block-level" placeholder="${ __('LoginEmail')}">
+                <input type="text" id="username" name="username" class="input-block-level"
+                       placeholder="${ __('LoginEmail')}">
                 <label class="strong">${ __('LoginPassword')}</label>
-                <input type="password" id="password" name="password" class="input-block-level" placeholder="${ __('LoginPassword')}">
+                <input type="password" id="password" name="password" class="input-block-level"
+                       placeholder="${ __('LoginPassword')}">
+
                 <div class="separator line"></div>
                 <span class="pull-left uniformjs"><label class="checkbox"><a href="#">${ __('LoginForgot')}</a></label></span>
                 <button class="btn btn-large btn-primary pull-right" type="submit">${ __('LoginLogin')}</button>
                 <div class="clearfix"></div>
             </form>
-            <a class="signup btn btn-large btn-info" href="/signup">${ __('LoginRegister')}</a>
+            <a class="signup btn btn-large btn-info" href="#signup-dialog">${ __('LoginRegister')}</a>
         </div>
     </div>
 </div>
@@ -43,7 +46,6 @@
 
 <div id="modal" class="modal hide fade" role="dialog">
     <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h3></h3>
     </div>
     <div class="modal-body">
@@ -53,6 +55,56 @@
         </button>
         <button class="btn btn-block btn-primary btn-icon glyphicons ok"><i></i> Продолжить</button>
     </div>
+</div>
+
+<div id="signup-dialog" class="modal hide fade" role="dialog">
+    <div class="modal-header">
+        <h3>${__('LoginSignupTitle')}</h3>
+    </div>
+    <div class="modal-body">
+        <p>${__('LoginSignupQuestion')}</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#signup-verify-card" class="btn btn-block btn-primary btn-icon glyphicons ok"><i></i>
+            ${__('CommonYes')}</a>
+        <a href="#signup-no-card" class="btn btn-block btn-icon glyphicons circle_exclamation_mark"><i></i>
+            ${__('CommonNo')}</a>
+    </div>
+</div>
+
+<div id="signup-no-card" class="modal hide fade" role="dialog">
+    <div class="modal-header">
+        <h3>${__('LoginSignupGetTitle')}</h3>
+    </div>
+    <div class="modal-body">
+        <p>${__('LoginSignupGet')}</p>
+    </div>
+    <div class="modal-footer">
+        <a href="/login" class="btn btn-block btn-primary btn-icon glyphicons ok"><i></i> ${__('CommonOk')}</a>
+    </div>
+</div>
+
+<div id="signup-verify-card" class="modal hide fade" role="dialog">
+    <form id="verifyForm" action="verifyCard" method="post">
+        <div class="modal-header">
+            <h3>${__('LoginSignupVerifyTitle')}</h3>
+        </div>
+        <div class="modal-body">
+            <div class="form-signin">
+                <label class="strong">${ __('LoginSignupCardNumber')}</label>
+                <input type="text" id="cardNumber" name="cardNumber" class="input-block-level"
+                       placeholder="${ __('LoginSignupCardNumberEx')}">
+                <label class="strong">${ __('LoginSignupPhone')}</label>
+                <input type="text" id="phone" name="phone" class="input-block-level"
+                       placeholder="${ __('LoginSignupPhoneEx')}">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-block btn-primary btn-icon glyphicons ok"><i></i> ${__('CommonOk')}</button>
+            <a href="/login" class="btn btn-block btn-icon glyphicons circle_exclamation_mark"><i></i>
+                ${__('CommonCancel')}</a>
+        </div>
+    </form>
 </div>
 
 </body>

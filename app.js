@@ -88,6 +88,7 @@ app.configure(function () {
     });
 
     app.use(function (req, res, next) {
+
         res.err = function (title, message) {
             res.send({
                 isOK: false,
@@ -105,7 +106,6 @@ app.configure(function () {
         };
 
         req.baseUrl = req.protocol + '://' + req.headers.host;
-        console.log(req.baseUrl);
 
         next();
     });
@@ -120,16 +120,15 @@ app.configure('development', function () {
 
 app.get('/', login.ensureLoggedIn("/login"), routes.index);
 
+app.get('/content', routes.content);
+app.post('/verifyCard', routes.verifyCard);
+
 app.get('/signup', routes.signup);
 app.post('/signup', routes.signupComplete);
 
 app.get('/login', routes.login);
 app.post('/login', function(req, res) {
     passport.authenticate('local', function(err, user, info) {
-
-        console.log(err);
-        console.log(user);
-        console.log(info);
 
         if (err) {
             res.err(res.__('LoginError'), err.toString());
@@ -151,6 +150,7 @@ app.post('/login', function(req, res) {
     })(req, res);
 });
 
+
 app.get('/logout', function (req, res) {
     req.logOut();
     res.redirect('/');
@@ -168,8 +168,8 @@ app.post('/api/transaction', routes.transaction);
 app.get('/bonus', login.ensureLoggedIn("/login"), routes.bonus);
 app.get('/history', login.ensureLoggedIn("/login"), routes.history);
 app.get('/profile', login.ensureLoggedIn("/login"), routes.profile);
-app.post('/profile-update', login.ensureLoggedIn("/login"), routes.profileUpdate);
-app.post('/password-change', login.ensureLoggedIn("/login"), routes.profileUpdate);
+app.post('/profile', login.ensureLoggedIn("/login"), routes.profileUpdate);
+app.post('/password-change', login.ensureLoggedIn("/login"), routes.passwordChange);
 app.post('/block-card', login.ensureLoggedIn("/login"), routes.blockCard);
 app.post('/replace-card', login.ensureLoggedIn("/login"), routes.replaceCard);
 

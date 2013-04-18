@@ -22,7 +22,6 @@ var customerSchema = mongoose.Schema({
     gender: { type: String, required: true },
     dateOfBirth: Date,
     cardNumber: { type: String, unique: true, required: true },
-    PIN: { type: String, required: true },
     secretQuestion: { type: String, required: true },
     secretAnswer: { type: String, required: true },
     activity: { type: String, required: true },
@@ -75,4 +74,19 @@ exports.calculatePointsBalance = function (cardNumber, next) {
             if(err) next(err, 0);
             else next(null, result.length > 0 ? result[0].balance : 0);
         });
+}
+
+exports.verifyCard = function(cardNumber, phone, __, next){
+    //TODO: check actual card numbers against the database
+    var err = null;
+    if(cardNumber != '0123456789123' || phone != '0444444444'){
+        err = __('LoginSignupCardVerificationErrorDetails');
+    }
+    var cust = null;
+    if(!err){
+        cust = new exports.Customer();
+        cust.cardNumber = cardNumber;
+        cust.phone = phone;
+    }
+    if(next)next(err, cust);
 }
