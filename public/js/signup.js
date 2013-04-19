@@ -39,6 +39,16 @@ $(function () {
         dobYear.append('<option value="' + i + '">' + i + '</option>');
     }
 
+    var sq = $('select[name=secretQuestion]');
+    for(var i = 0; i < questions.length; i++){
+        sq.append('<option value="' + i + '">' + questions[i] + '</option>');
+    }
+
+    var a = $('select[name=activity]');
+    for(var i = 0; i < activities.length; i++){
+        a.append('<option value="' + i + '">' + activities[i] + '</option>');
+    }
+
     jQuery.validator.addMethod("dob", function (value, element) {
         var dob = new Date(dobYear.val() + '-' + dobMonth.val() + '-' + dobDay.val());
         $('input[name=dateOfBirth]').val(dobYear.val() + '-' + dobMonth.val() + '-' + dobDay.val());

@@ -1,6 +1,6 @@
 $(function(){
     var app = Sammy('#content', function() {
-        this.get('/', function() {
+        this.get('#/', function() {
            app.swap('<div data-bind="template : { name : \'dashboard\' }"></div>');
            ko.applyBindings({}, document.getElementById('content'));
         });
@@ -49,7 +49,7 @@ $(function(){
         update: function(element, valueAccessor, allBindingsAccessor, viewModel) {
             var value = valueAccessor(),
                 allBindings = allBindingsAccessor();
-            var valueUnwrapped = new Date(ko.utils.unwrapObservable(value));
+            var valueUnwrapped =  parseISO8601(ko.utils.unwrapObservable(value));
             var pattern = allBindings.datePattern || 'MM/dd/yyyy';
             $(element).text(valueUnwrapped.toString(pattern));
         }
@@ -69,14 +69,18 @@ function HistoryViewModel(app, data){
     self.data = data;
 
     self.init = function(){
-          $('#historyTable').dataTable();
+          $('#historyTable').dataTable({
+              oLanguage: {
+                  sUrl: "/theme/scripts/DataTables/localization/ru.txt"
+              }
+          });
     }
 }
 
 function ProfileViewModel(app, data){
     var self = this;
     self.app = app;
-    data.date = new Date(data.dateOfBirth);
+    data.date = parseISO8601(data.dateOfBirth);
 
     self.data = ko.observable(data)();
 
@@ -125,10 +129,10 @@ function ProfileViewModel(app, data){
             },
             success: function (data) {
                 $('#modal').find('.btn-primary').click(function () {
-                    self.app.setLocation('/');
+                    self.app.setLocation('#/');
                 });
                 if (data.isOK) {
-                    self.app.setLocation('/');
+                    self.app.setLocation('#/');
                 } else {
                     $('#modal').find('.close').show();
                     $('#modal').find('button[data-dismiss="modal"]').show();
@@ -150,11 +154,6 @@ function ProfileViewModel(app, data){
                     required: true,
                     email: true
                 },
-                PIN: {
-                    required: true,
-                    number: true,
-                    maxlength: 4
-                },
                 firstName: "required",
                 lastName: "required",
                 city: "required",
@@ -174,11 +173,6 @@ function ProfileViewModel(app, data){
                     required: "Введите адрес Вашей электронной почты",
                     email: "Введите корректный адрес электронной почты"
                 },
-                PIN: {
-                    required: "Введите 4 цифры PIN-кода",
-                    number: "Введите 4 цифры PIN-кода",
-                    maxlength: "Введите 4 цифры PIN-кода"
-                },
                 firstName: "Введите Ваше имя",
                 lastName: "Введите Вашу фамилию",
                 city: "Введите название города",
@@ -191,6 +185,21 @@ function ProfileViewModel(app, data){
             }
         });
     };
+}
+
+function parseISO8601(dateStringInRange) {
+    var isoExp = /^\s*(\d{4})-(\d\d)-(\d\d)\s*$/,
+        date = new Date(NaN), month,
+        parts = isoExp.exec(dateStringInRange.split('T')[0]);
+
+    if(parts) {
+        month = +parts[2];
+        date.setFullYear(parts[1], month - 1, parts[3]);
+        if(month != date.getMonth() + 1) {
+            date.setTime(NaN);
+        }
+    }
+    return date;
 }
 
 $.validator.setDefaults(
@@ -229,7 +238,7 @@ function PasswordViewModel(app){
             },
             success: function (data) {
                 $('#modal').find('.btn-primary').click(function () {
-                    self.app.setLocation('/');
+                    self.app.setLocation('#/');
                     $('#modal').modal('hide');
                 });
                 if (data.isOK) {
@@ -285,7 +294,7 @@ function BlockCardViewModel(app){
          $('#button-block-card').click(function(){
              $.post('/block-card', function(data){
                  $('#modal').find('.btn-primary').click(function () {
-                     self.app.setLocation('/');
+                     self.app.setLocation('#/');
                      $('#modal').modal('hide');
                  });
                  if (data.isOK) {
@@ -306,7 +315,7 @@ function BlockCardViewModel(app){
          });
 
         $('#button-block-cancel').click(function(){
-            self.app.setLocation('/')
+            self.app.setLocation('#/')
         });
     };
 }
@@ -320,7 +329,7 @@ function ReplaceCardViewModel(app){
         $('#button-replace-card').click(function(){
             $.post('/replace-card', function(data){
                 $('#modal').find('.btn-primary').click(function () {
-                    self.app.setLocation('/');
+                    self.app.setLocation('#/');
                     $('#modal').modal('hide');
                 });
                 if (data.isOK) {
@@ -341,7 +350,7 @@ function ReplaceCardViewModel(app){
         });
 
         $('#button-replace-cancel').click(function(){
-            self.app.setLocation('/')
+            self.app.setLocation('#/')
         });
     };
 }

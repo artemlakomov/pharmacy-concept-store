@@ -66,6 +66,9 @@
     <!-- Date.js -->
     <script src="theme/scripts/date.js"></script>
 
+    <!-- Dictionaries -->
+    <script src="js/ru/dictionaries.js"></script>
+
 	<!--[if IE]><script type="text/javascript" src="theme/scripts/excanvas/excanvas.js"></script><![endif]-->
 	<!--[if lt IE 8]><script type="text/javascript" src="theme/scripts/json2.js"></script><![endif]-->
 </head>

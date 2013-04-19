@@ -19,7 +19,7 @@
 <!-- REPLACE CARD PAGE TEMPLATE -->
 <script type="text/html" id="replace-card">
     <ul class="breadcrumb">
-        <li><a href="/" class="glyphicons home"><i></i> ${__('CommonHome')}</a></li>
+        <li><a href="#/" class="glyphicons home"><i></i> ${__('CommonHome')}</a></li>
         <li class="divider"></li>
         <li>${__('DashboardCard')}</li>
     </ul>
@@ -46,7 +46,7 @@
 <!-- BLOCK CARD PAGE TEMPLATE -->
 <script type="text/html" id="block-card">
     <ul class="breadcrumb">
-        <li><a href="/" class="glyphicons home"><i></i> ${__('CommonHome')}</a></li>
+        <li><a href="#/" class="glyphicons home"><i></i> ${__('CommonHome')}</a></li>
         <li class="divider"></li>
         <li>${__('DashboardCard')}</li>
     </ul>
@@ -73,7 +73,7 @@
 <!-- PASSWORD PAGE TEMPLATE -->
 <script type="text/html" id="password">
     <ul class="breadcrumb">
-        <li><a href="/" class="glyphicons home"><i></i> ${__('CommonHome')}</a></li>
+        <li><a href="#/" class="glyphicons home"><i></i> ${__('CommonHome')}</a></li>
         <li class="divider"></li>
         <li>${__('ProfileTitle')}</li>
     </ul>
@@ -122,7 +122,7 @@
 <!-- PROFILE PAGE TEMPLATE -->
 <script type="text/html" id="profile">
     <ul class="breadcrumb">
-        <li><a href="/" class="glyphicons home"><i></i> ${__('CommonHome')}</a></li>
+        <li><a href="#/" class="glyphicons home"><i></i> ${__('CommonHome')}</a></li>
         <li class="divider"></li>
         <li>${__('ProfileTitle')}</li>
     </ul>
@@ -143,21 +143,14 @@
                                                  id="cardNumber" name="cardNumber" type="text"/>
                     </div>
                 </div>
+            </div>
+            <div class="span6">
                 <div class="control-group">
                     <label class="control-label" for="email">${__('SignupEmail')}</label>
 
                     <div class="controls"><input readonly="readonly" data-bind="value: data.email" class="span12"
                                                  id="email" name="email" type="text"/></div>
-                </div>
-            </div>
-            <div class="span6">
-                <div class="control-group">
-                    <label class="control-label" for="PIN">${__('SignupPIN')}</label>
-
-                    <div class="controls"><input data-bind="value: data.PIN" class="span12" id="PIN" name="PIN"
-                                                 type="text"/>
-                    </div>
-                </div>
+                </div>s
             </div>
         </div>
         <hr class="separator line"/>
@@ -230,15 +223,18 @@
                 <div class="control-group">
                     <label class="control-label" for="activity">${__('SignupActivity')}</label>
 
-                    <div class="controls"><input data-bind="value: data.activity" class="span12" id="activity"
-                                                 name="activity" type="text"/>
+                    <div class="controls">
+                        <select id="activity" name="activity" class="span12" data-bind="value: data.activity, options:activities, optionsCaption: '${__('CommonPleaseSelect')}'">
+                        </select>
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="secretQuestion">${__('SignupSecretQuestion')}</label>
 
-                    <div class="controls"><input data-bind="value: data.secretQuestion" class="span12"
-                                                 id="secretQuestion" name="secretQuestion" type="text"/>
+                    <div class="controls">
+                        <select id="secretQuestion" name="secretQuestion" class="span12" data-bind="value: data.secretQuestion, options:questions, optionsCaption: '${__('CommonPleaseSelect')}'">
+                            <option value="">${__('CommonPleaseSelect')}</option>
+                        </select>
                     </div>
                 </div>
                 <div class="control-group">
@@ -285,7 +281,7 @@
 <!-- HISTORY PAGE TEMPLATE -->
 <script type="text/html" id="history">
     <ul class="breadcrumb">
-        <li><a href="/" class="glyphicons home"><i></i> ${__('CommonHome')}</a></li>
+        <li><a href="#/" class="glyphicons home"><i></i> ${__('CommonHome')}</a></li>
         <li class="divider"></li>
         <li>${__('DashboardTransactions')}</li>
     </ul>
@@ -330,7 +326,7 @@
 <!-- BONUS PAGE TEMPLATE -->
 <script type="text/html" id="bonus">
     <ul class="breadcrumb">
-        <li><a href="/" class="glyphicons home"><i></i> ${__('CommonHome')}</a></li>
+        <li><a href="#/" class="glyphicons home"><i></i> ${__('CommonHome')}</a></li>
         <li class="divider"></li>
         <li>${__('DashboardTransactions')}</li>
     </ul>
@@ -367,7 +363,7 @@
 <!-- DASHBOARD TEMPLATE -->
 <script type="text/html" id="dashboard">
     <ul class="breadcrumb">
-        <li><a href="/" class="glyphicons home"><i></i> ${__('CommonHome')}</a></li>
+        <li><a href="#/" class="glyphicons home"><i></i> ${__('CommonHome')}</a></li>
     </ul>
     <div class="separator bottom"></div>
 
