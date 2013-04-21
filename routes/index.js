@@ -4,12 +4,21 @@ var config = require('../model/config').init();
 var storage = require('../model/storage');
 
 exports.index = function (req, res) {
-    console.log('index');
     storage.calculatePointsBalance(req.user.cardNumber, function (err, points) {
         res.render('index', {
             title: res.__('DashboardTitle') + ' - ' + res.__('DashboardSubtitle'),
             points: points,
+            user: req.user,
             config: config
+        });
+    });
+};
+
+exports.dashboard = function (req, res) {
+    storage.calculatePointsBalance(req.user.cardNumber, function (err, points) {
+        res.send({
+            points: points,
+            suggestExtendedForm: !req.user.extended
         });
     });
 };
@@ -104,22 +113,22 @@ exports.activateComplete = function (req, res) {
             } else {
                 res.ok(res.__('ActivateSuccessTitle'), res.__('ActivateSuccessBody'));
                 try {
-                    storage.addCustomerTransaction(
-                        cust.cardNumber,
-                        '',
-                        res.__('ActivateWelcomeBonus'),
-                        0,
-                        config.welcomePointsBonus,
-                        new Date(),
-                        function (err) {
-                            if (err) console.error(err);
-                            else {
-                                mailer.sendWelcomeBonusEmail(cust, req, res, function (err) {
-                                    if (err) console.error(err);
-                                });
-                            }
-                        }
-                    );
+                    /*storage.addCustomerTransaction(
+                     cust.cardNumber,
+                     '',
+                     res.__('ActivateWelcomeBonus'),
+                     0,
+                     config.welcomePointsBonus,
+                     new Date(),
+                     function (err) {
+                     if (err) console.error(err);
+                     else {
+                     mailer.sendWelcomeBonusEmail(cust, req, res, function (err) {
+                     if (err) console.error(err);
+                     });
+                     }
+                     }
+                     ); */
                 }
                 catch (e) {
                     console.error(e);
@@ -208,6 +217,7 @@ exports.history = function (req, res) {
 };
 
 exports.profile = function (req, res) {
+    req.user.password = null;
     res.send(req.user);
 };
 
@@ -235,6 +245,47 @@ exports.profileUpdate = function (req, res) {
         }
     });
 
+};
+
+exports.profileExtended = function (req, res) {
+    res.send(req.user.extended ? req.user.extended : {});
+};
+
+exports.profileExtendedUpdate = function (req, res) {
+
+    for (var i = 0; i < req.body.length; i++) {
+        console.log(req.body[i]);
+    }
+
+    req.user.extended = JSON.stringify(req.body);
+    req.user.save(function (err) {
+        if (err) {
+            res.err(res.__('ApiErrorTitle'), err.toString());
+        } else {
+            res.ok(res.__('CommonSuccess'), res.__('ProfileUpdateSuccess'));
+            try {
+                storage.addCustomerTransaction(
+                    req.user.cardNumber,
+                    '',
+                    res.__('ActivateWelcomeBonus'),
+                    0,
+                    config.welcomePointsBonus,
+                    new Date(),
+                    function (err) {
+                        if (err) console.error(err);
+                        else {
+                            mailer.sendWelcomeBonusEmail(cust, req, res, function (err) {
+                                if (err) console.error(err);
+                            });
+                        }
+                    }
+                );
+            }
+            catch (e) {
+                console.error(e);
+            }
+        }
+    });
 };
 
 exports.passwordChange = function (req, res) {
@@ -289,18 +340,18 @@ exports.content = function (req, res) {
 
     var pg = req.query.page;
     var doc = null;
-    if(pg == 'terms'){
+    if (pg == 'terms') {
         doc = 'ContentTerms';
     }
 
-    if(!doc){
+    if (!doc) {
         res.status(404).send("Not found");
         return;
     }
 
     fs = require('fs')
-    fs.readFile(res.__(doc + 'Body'), 'utf8', function (err,data) {
-        if(err) console.error(err);
+    fs.readFile(res.__(doc + 'Body'), 'utf8', function (err, data) {
+        if (err) console.error(err);
         res.render('content', {
             title: res.__(doc + 'Title'),
             body: data,

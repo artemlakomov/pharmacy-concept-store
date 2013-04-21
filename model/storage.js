@@ -30,7 +30,8 @@ var customerSchema = mongoose.Schema({
     phone: { type: String, required: true },
     contactByEmail: { type: Boolean, required: true, default: true },
     contactBySMS: { type: Boolean, required: true, default: true },
-    activationCode: { type: String, required: false }
+    activationCode: { type: String, required: false },
+    extended: { type: String, required: false }
 });
 
 exports.Customer = mongoose.model('Customer', customerSchema);

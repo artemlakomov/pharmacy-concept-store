@@ -35,9 +35,11 @@
     </div>
     <hr class="separator line"/>
     <div class="form-actions">
-        <button type="button" id="button-replace-card" class="btn btn-icon btn-primary glyphicons circle_ok"><i></i> ${__('ReplaceCardBlock')}
+        <button type="button" id="button-replace-card" class="btn btn-icon btn-primary glyphicons circle_ok"><i></i>
+            ${__('ReplaceCardBlock')}
         </button>
-        <button type="button" id="button-replace-cancel" class="btn btn-icon btn-warning glyphicons remove_2"><i></i> ${__('CommonCancel')}
+        <button type="button" id="button-replace-cancel" class="btn btn-icon btn-warning glyphicons remove_2"><i></i>
+            ${__('CommonCancel')}
         </button>
     </div>
 
@@ -62,9 +64,11 @@
     </div>
     <hr class="separator line"/>
     <div class="form-actions">
-        <button type="button" id="button-block-card" class="btn btn-icon btn-primary glyphicons circle_ok"><i></i> ${__('BlockCardBlock')}
+        <button type="button" id="button-block-card" class="btn btn-icon btn-primary glyphicons circle_ok"><i></i>
+            ${__('BlockCardBlock')}
         </button>
-        <button type="button" id="button-block-cancel" class="btn btn-icon btn-warning glyphicons remove_2"><i></i> ${__('CommonCancel')}
+        <button type="button" id="button-block-cancel" class="btn btn-icon btn-warning glyphicons remove_2"><i></i>
+            ${__('CommonCancel')}
         </button>
     </div>
 
@@ -119,157 +123,116 @@
 </script>
 
 
-<!-- PROFILE PAGE TEMPLATE -->
-<script type="text/html" id="profile">
+<!-- EXTENDED PROFILE PAGE TEMPLATE -->
+<script type="text/html" id="profile-extended">
     <ul class="breadcrumb">
         <li><a href="#/" class="glyphicons home"><i></i> ${__('CommonHome')}</a></li>
         <li class="divider"></li>
-        <li>${__('ProfileTitle')}</li>
+        <li>${__('ProfileExTitle')}</li>
     </ul>
     <div class="separator bottom"></div>
 
-    <h3 class="glyphicons show_thumbnails_with_lines"><i></i> ${__('ProfileTitle')}</h3>
+    <h3 class="glyphicons show_thumbnails_with_lines"><i></i> ${__('ProfileExTitle')}</h3>
 
-    <form class="form-horizontal" style="margin-bottom: 0;" id="profileForm" action="/profile" method="post"
+    <p>${__('ProfileExDescription')}</p>
+
+    <form class="form-horizontal" style="margin-bottom: 0;" id="profileExForm" action="/profile-extended-update"
+          method="post"
           autocomplete="off">
-        <input type="hidden" name="dateOfBirth" data-bind="value : data.dateOfBirth"/>
 
         <div class="row-fluid">
             <div class="span6">
                 <div class="control-group">
-                    <label class="control-label" for="cardNumber">${__('SignupCardNumber')}</label>
+                    <label for="numberOfPeople">${__('ProfileExNumberOfPeople')}</label>
+                    <select class="span12" id="numberOfPeople" name="numberOfPeople"
+                            data-bind="options: optionsNumberOfPeople, value: data.numberOfPeople, optionsCaption: '${__('CommonPleaseSelect')}'"></select>
 
-                    <div class="controls"><input readonly="readonly" data-bind="value: data.cardNumber" class="span12"
-                                                 id="cardNumber" name="cardNumber" type="text"/>
-                    </div>
+                </div>
+                <div class="control-group">
+                    <label for="services">${__('ProfileExServices')}</label>
+                </div>
+                <div id="services">
+                </div>
+                <div class="control-group">
+                    <label for="cosmetology">${__('ProfileExCosmetology')}</label>
+                </div>
+                <div id="cosmetology">
                 </div>
             </div>
             <div class="span6">
                 <div class="control-group">
-                    <label class="control-label" for="email">${__('SignupEmail')}</label>
+                    <label>${__('ProfileExKids')}</label>
+                </div>
+                <!-- ko foreach: data.kids -->
+                <div class="control-group">
+                    <label class="control-label" data-bind="text: $index() + 1"></label>
 
-                    <div class="controls"><input readonly="readonly" data-bind="value: data.email" class="span12"
-                                                 id="email" name="email" type="text"/></div>
-                </div>s
+                    <div class="controls">
+                        <input name="kidAge" data-bind="value: age" class="span12" type="text"/>
+                    </div>
+                </div>
+                <!-- /ko -->
+                <div class="control-group">
+                    <label for="medicines">${__('ProfileExFrequentMedicines')}</label>
+
+                    <div class="controls" style="margin-left:0;">
+                        <input type="button" id="medicinesTrigger" name="medicinesTrigger" class="btn btn-info"
+                               value="${__('ProfileExFill')}"/>
+                    </div>
+                </div>
+                <div id="medicinesModal" class="modal hide fade" role="dialog">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h3>${__('ProfileExFrequentMedicines')}</h3>
+                    </div>
+                    <div class="modal-body" id="medicines">
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-block btn-primary btn-icon glyphicons ok" data-dismiss="modal">
+                            <i></i> Продолжить
+                        </button>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="healthStatus">${__('ProfileExHealthStatus')}</label>
+                    <select class="span12" id="healthStatus" name="healthStatus"
+                            data-bind="options: healthStates, value: data.healtsStatus, optionsCaption: '${__('CommonPleaseSelect')}'"></select>
+
+                </div>
+                <div class="control-group">
+                    <label for="stores">${__('ProfileExStores')}</label>
+                    <input id="stores" name="stores" data-bind="value: data.stores" class="span12" type="text"/>
+                </div>
+                <div class="control-group">
+                    <label for="financeStatus">${__('ProfileExFinanceStatus')}</label>
+                    <select class="span12" id="financeStatus" name="financeStatus"
+                            data-bind="options: financeStates, value: data.financeStatus, optionsCaption: '${__('CommonPleaseSelect')}'"></select>
+
+                </div>
+                <div class="control-group">
+                    <label for="hobby">${__('ProfileExHobby')}</label>
+                    <input id="hobby" name="hobby" data-bind="value: data.hobby" class="span12" type="text"/>
+                </div>
+                <div class="control-group">
+                    <label for="sports">${__('ProfileExSports')}</label>
+                    <select class="span12" id="sports" name="sports"
+                            data-bind="options: sportStates, value: data.sports, optionsCaption: '${__('CommonPleaseSelect')}'"></select>
+
+                </div>
             </div>
         </div>
         <hr class="separator line"/>
         <div class="row-fluid">
-            <div class="span6">
-                <div class="control-group">
-                    <label class="control-label" for="firstName">${__('SignupFirstName')}</label>
+            <div id="privacy" class="span12">
+                <label class="checkbox">
+                    <input id="agree" name="agree" type="checkbox" class="checkbox" value="1"/>
+                    ${__('ProfileExPrivacy')}
+                </label>
 
-                    <div class="controls"><input data-bind="value: data.firstName" class="span12" id="firstName"
-                                                 name="firstName" type="text"/></div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="lastName">${__('SignupLastName')}</label>
-
-                    <div class="controls"><input data-bind="value: data.lastName" class="span12" id="lastName"
-                                                 name="lastName" type="text"/></div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label">${__('SignupGender')}</label>
-
-                    <div class="controls">
-                        <input type="radio" data-bind="checked : data.gender == 'M'" class="radio" name="gender"
-                               value="M"/>
-                        <label class="radio">
-                            ${__('SignupGenderMale')}
-                        </label>
-
-                        <input type="radio" data-bind="checked: data.gender == 'F'" class="radio" name="gender"
-                               value="F"/>
-                        <label class="radio">
-                            ${__('SignupGenderFemale')}
-                        </label>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label">${__('SignupDateOfBirth')}</label>
-
-                    <div class="controls">
-                        <select class="span3" name="dobDay">
-                            <option value="">${__('CommonPleaseSelect')}</option>
-                        </select>
-                        <select class="span6" name="dobMonth">
-                            <option value="">${__('CommonPleaseSelect')}</option>
-                        </select>
-                        <select class="span3" name="dobYear">
-                            <option value="">${__('CommonPleaseSelect')}</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="city">${__('SignupCity')}</label>
-
-                    <div class="controls"><input data-bind="value: data.city" class="span12" id="city" name="city"
-                                                 type="text"/></div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="address">${__('SignupAddress')}</label>
-
-                    <div class="controls"><input data-bind="value: data.address" class="span12" id="address"
-                                                 name="address" type="text"/></div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="phone">${__('SignupPhone')}</label>
-
-                    <div class="controls"><input data-bind="value: data.phone" class="span12" id="phone" name="phone"
-                                                 type="text"/></div>
-                </div>
-            </div>
-            <div class="span6">
-                <div class="control-group">
-                    <label class="control-label" for="activity">${__('SignupActivity')}</label>
-
-                    <div class="controls">
-                        <select id="activity" name="activity" class="span12" data-bind="value: data.activity, options:activities, optionsCaption: '${__('CommonPleaseSelect')}'">
-                        </select>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="secretQuestion">${__('SignupSecretQuestion')}</label>
-
-                    <div class="controls">
-                        <select id="secretQuestion" name="secretQuestion" class="span12" data-bind="value: data.secretQuestion, options:questions, optionsCaption: '${__('CommonPleaseSelect')}'">
-                            <option value="">${__('CommonPleaseSelect')}</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="secretAnswer">${__('SignupSecretAnswer')}</label>
-
-                    <div class="controls"><input data-bind="value: data.secretAnswer" class="span12" id="secretAnswer"
-                                                 name="secretAnswer" type="text"/>
-                    </div>
-                </div>
             </div>
         </div>
         <hr class="separator line"/>
-
-        <div class="row-fluid uniformjs">
-            <div class="span12">
-                <div id="newsletter_topics">
-                    <h4>${__('SignupNewsletters')}</h4>
-
-                    <p>${__('SignupNewslettersOptions')}</p>
-                    <label for="contactByEmail">
-                        <input data-bind="checked : data.contactByEmail" type="checkbox" id="contactByEmail" value="true"
-                               name="contactByEmail"/>
-                        ${__('SignupNewsletterEmail')}
-                    </label>
-                    <label for="contactBySMS">
-                        <input data-bind="checked : data.contactBySMS" type="checkbox" id="contactBySMS" value="true"
-                               name="contactBySMS"/>
-                        ${__('SignupNewsletterSMS')}
-                    </label>
-                </div>
-            </div>
-        </div>
-
-        <div class="separator"></div>
-
         <div class="form-actions">
             <button type="submit" class="btn btn-icon btn-primary glyphicons circle_ok"><i></i>${__('ProfileSave')}
             </button>
@@ -380,6 +343,20 @@
     <div class="separator line"></div>
 
     <div class="widget widget-4">
+        <!-- ko if : suggestExtendedForm -->
+        <div class="widget-body" style="padding: 10px 0;">
+            <div class="row-fluid">
+                <div class="span12">
+                    <a href="#/profile-extended" class="widget-stats line">
+                        <span class="txt">${__('DashboardBonusTransactionsPoints')|raw}</span>
+                        <span class="glyphicons circle_plus"><i></i></span>
+
+                        <div class="clearfix"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- /ko -->
         <div class="widget-head">
             <h4 class="heading">${__('DashboardTransactions')}</h4>
         </div>
@@ -387,7 +364,7 @@
             <div class="row-fluid">
                 <div class="span6">
                     <a href="#/bonus" class="widget-stats">
-                        <span class="txt">${__('DashboardTransactionsPoints', points)|raw}</span>
+                        <span class="txt"><strong data-bind="text:points"></strong> ${__('DashboardTransactionsPoints')}</span>
                         <span class="glyphicons edit"><i></i></span>
 
                         <div class="clearfix"></div>
@@ -459,6 +436,169 @@
         </div>
     </div>
     <br>
+</script>
+
+<!-- PROFILE PAGE TEMPLATE -->
+<script type="text/html" id="profile">
+    <ul class="breadcrumb">
+        <li><a href="#/" class="glyphicons home"><i></i> ${__('CommonHome')}</a></li>
+        <li class="divider"></li>
+        <li>${__('ProfileTitle')}</li>
+    </ul>
+    <div class="separator bottom"></div>
+
+    <h3 class="glyphicons show_thumbnails_with_lines"><i></i> ${__('ProfileTitle')}</h3>
+
+    <form class="form-horizontal" style="margin-bottom: 0;" id="profileForm" action="/profile" method="post"
+          autocomplete="off">
+        <input type="hidden" name="dateOfBirth" data-bind="value : data.dateOfBirth"/>
+
+        <div class="row-fluid">
+            <div class="span6">
+                <div class="control-group">
+                    <label class="control-label" for="cardNumber">${__('SignupCardNumber')}</label>
+
+                    <div class="controls"><input readonly="readonly" data-bind="value: data.cardNumber" class="span12"
+                                                 id="cardNumber" name="cardNumber" type="text"/>
+                    </div>
+                </div>
+            </div>
+            <div class="span6">
+                <div class="control-group">
+                    <label class="control-label" for="email">${__('SignupEmail')}</label>
+
+                    <div class="controls"><input readonly="readonly" data-bind="value: data.email" class="span12"
+                                                 id="email" name="email" type="text"/></div>
+                </div>
+                s
+            </div>
+        </div>
+        <hr class="separator line"/>
+        <div class="row-fluid">
+            <div class="span6">
+                <div class="control-group">
+                    <label class="control-label" for="firstName">${__('SignupFirstName')}</label>
+
+                    <div class="controls"><input data-bind="value: data.firstName" class="span12" id="firstName"
+                                                 name="firstName" type="text"/></div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="lastName">${__('SignupLastName')}</label>
+
+                    <div class="controls"><input data-bind="value: data.lastName" class="span12" id="lastName"
+                                                 name="lastName" type="text"/></div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">${__('SignupGender')}</label>
+
+                    <div class="controls">
+                        <input type="radio" data-bind="checked : data.gender == 'M'" class="radio" name="gender"
+                               value="M"/>
+                        <label class="radio">
+                            ${__('SignupGenderMale')}
+                        </label>
+
+                        <input type="radio" data-bind="checked: data.gender == 'F'" class="radio" name="gender"
+                               value="F"/>
+                        <label class="radio">
+                            ${__('SignupGenderFemale')}
+                        </label>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">${__('SignupDateOfBirth')}</label>
+
+                    <div class="controls">
+                        <select class="span3" name="dobDay">
+                            <option value="">${__('CommonPleaseSelect')}</option>
+                        </select>
+                        <select class="span6" name="dobMonth">
+                            <option value="">${__('CommonPleaseSelect')}</option>
+                        </select>
+                        <select class="span3" name="dobYear">
+                            <option value="">${__('CommonPleaseSelect')}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="city">${__('SignupCity')}</label>
+
+                    <div class="controls"><input data-bind="value: data.city" class="span12" id="city" name="city"
+                                                 type="text"/></div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="address">${__('SignupAddress')}</label>
+
+                    <div class="controls"><input data-bind="value: data.address" class="span12" id="address"
+                                                 name="address" type="text"/></div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="phone">${__('SignupPhone')}</label>
+
+                    <div class="controls"><input data-bind="value: data.phone" class="span12" id="phone" name="phone"
+                                                 type="text"/></div>
+                </div>
+            </div>
+            <div class="span6">
+                <div class="control-group">
+                    <label class="control-label" for="activity">${__('SignupActivity')}</label>
+
+                    <div class="controls">
+                        <select id="activity" name="activity" class="span12"
+                                data-bind="value: data.activity, options:activities, optionsCaption: '${__('CommonPleaseSelect')}'">
+                        </select>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="secretQuestion">${__('SignupSecretQuestion')}</label>
+
+                    <div class="controls">
+                        <select id="secretQuestion" name="secretQuestion" class="span12"
+                                data-bind="value: data.secretQuestion, options:questions, optionsCaption: '${__('CommonPleaseSelect')}'">
+                            <option value="">${__('CommonPleaseSelect')}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="secretAnswer">${__('SignupSecretAnswer')}</label>
+
+                    <div class="controls"><input data-bind="value: data.secretAnswer" class="span12" id="secretAnswer"
+                                                 name="secretAnswer" type="text"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="separator line"/>
+
+        <div class="row-fluid uniformjs">
+            <div class="span12">
+                <div id="newsletter_topics">
+                    <h4>${__('SignupNewsletters')}</h4>
+
+                    <p>${__('SignupNewslettersOptions')}</p>
+                    <label for="contactByEmail">
+                        <input data-bind="checked : data.contactByEmail" type="checkbox" id="contactByEmail"
+                               value="true"
+                               name="contactByEmail"/>
+                        ${__('SignupNewsletterEmail')}
+                    </label>
+                    <label for="contactBySMS">
+                        <input data-bind="checked : data.contactBySMS" type="checkbox" id="contactBySMS" value="true"
+                               name="contactBySMS"/>
+                        ${__('SignupNewsletterSMS')}
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-icon btn-primary glyphicons circle_ok"><i></i>${__('ProfileSave')}
+            </button>
+        </div>
+
+    </form>
 </script>
 
 <!-- jQuery Validate -->

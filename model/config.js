@@ -10,7 +10,7 @@ exports.init = function () {
             }
         },
         ip: ['127.0.0.1','77.91.167.57'],
-        welcomePointsBonus : 20,
+        welcomePointsBonus : 300,
         managerEmail : 'manager@integritum.eu',
         public: 'http://pharm-concept.com.ua',
         //mongo: 'mongodb://localhost/test'
